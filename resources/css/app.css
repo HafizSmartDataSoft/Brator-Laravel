@@ -1,3 +1,99 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+#game-board {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    width: 80%;
+}
+
+#meanings-container, #words-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 45%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.game-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-bottom: .1px   blue;
+    border-bottom-style: dotted;
+    height: 60px;
+}
+
+.game-item:hover {
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+img {
+    width: 60px;
+    height: 60px;
+}
+/* Add the new .matched class */
+.matched {
+    opacity: 0.3;
+    pointer-events: none;
+}
+/* Add the new .highlight class */
+.highlight {
+    background-color: #ffff99;
+    border: 1px solid #0f38c9fc;
+}
+.toast {
+    visibility: hidden;
+    max-width: 50%;
+    margin: auto;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: -50px;
+    transform: translateX(-50%);
+    font-size: 17px;
+    transition: visibility 0.5s, bottom 0.5s;
+}
+
+.toast.show {
+    visibility: visible;
+    bottom: 30px;
+}
+
+.toast.success {
+    background-color: #4CAF50;
+}
+
+.toast.error {
+    background-color: #f44336;
+}
+
+.arabic_font{
+    direction: rtl;
+    font-family: "noorehuda";
+    line-height: 1.8em;
+    font-size: 3em;
+}
+.arabic_font_name{
+    font-family: "noorehuda";
+}
