@@ -22,12 +22,15 @@ Route::get('/', function () {
 
 Route::get('/dashboard',[DashHomeController::Class,'index'])->name('/dashboard');
 
-Route::get('/add-product',[ProductController::Class,'addProduct'])->name('/add-product');
-Route::get('/product-list',[ProductController::Class,'productList'])->name('/product-list');
-Route::get('/edit-product',[ProductController::Class,'editProduct'])->name('/edit-product');
-Route::get('/add-category',[ProductController::Class,'addCategory'])->name('/add-category');
-Route::get('/category-list',[ProductController::Class,'categoryList'])->name('/category-list');
-Route::get('/add-brand',[ProductController::Class,'addBrand'])->name('/add-brand');
+Route::group(["prefix" => "e-commerce", "as" => "e-commerce."], function () {
+    Route::get('add-product',[ProductController::Class,'addProduct'])->name('add-product');
+    Route::get('product-list',[ProductController::Class,'productList'])->name('product-list');
+    Route::get('edit-product',[ProductController::Class,'editProduct'])->name('edit-product');
+    Route::get('add-category',[ProductController::Class,'addCategory'])->name('add-category');
+    Route::get('category-list',[ProductController::Class,'categoryList'])->name('category-list');
+    Route::get('add-brand',[ProductController::Class,'addBrand'])->name('add-brand');
+});
+
 
 Route::get('/edit-category',[ProductController::Class,'editCategory'])->name('/edit-category');
 
