@@ -16,4 +16,6 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    publicDir: 'public',
+
 });
