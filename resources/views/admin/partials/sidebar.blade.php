@@ -3,13 +3,13 @@
     <a href="/">
         <div class="sidebar-header">
             <div class="sidebar-logo-icon">
-                <img src="/adminAsset/svg/logo-small.svg" alt="logo" class="h-[45px]" />
+                <img src="{{ asset('adminAsset') }}/svg/logo.svg" alt="logo" class="h-[45px]" />
             </div>
 
             <div class="sidebar-logo-text">
                 <h1 class="flex text-xl">
-                    <span class="font-bold text-slate-800 dark:text-slate-200"> Admin </span>
-                    <span class="font-semibold text-primary-500">Toolkit</span>
+                    <span class="font-bold text-slate-800 dark:text-slate-200"> Brator </span>
+                    <span class="font-semibold text-primary-500">Admin</span>
                 </h1>
 
                 <p class="whitespace-nowrap text-xs text-slate-400">Simple &amp; Customizable</p>
@@ -93,47 +93,66 @@
         </li>
         <!-- ecommnerce -->
         <li>
+            @php
+                $menu_items = [
+                    // 'Add Category' => 'e-commerce.add-category',
+                    ' Order  ' => 'order.index',
+                    ' Discount  ' => 'discount.index',
+                    ' Customer  ' => 'customer.index',
+                    'Category' => 'e-commerce.category-list',
+                    'Image Setting' => 'image-setting.index',
+
+                    'Product' => 'product.index',
+                    ' Tags ' => 'product-tag.index',
+                    // "Add Vehicle Make" => "vehicle-make.create",
+                    ' Vehicle Make ' => 'vehicle-make.index',
+                    // "Add Vehicle Model" => "vehicle-model.create",
+                    ' Vehicle Model ' => 'vehicle-model.index',
+                    // 'Add Year' => 'vehicle-year.create',
+                    ' Year  ' => 'vehicle-year.index',
+                    // "Add Fuel Type" => "fuel-type.create",
+                    ' Fuel Type' => 'fuel-type.index',
+                    // "Add Engine Type" => "engine-type.create",
+                    ' Engine Type' => 'engine-type.index',
+                    // "Add Model" => "e-commerce.add-model",
+                    // "Add Make" => "make.create",
+                    // "Add Brand" => "e-commerce.add-brand",
+                    // 'Add Product' => 'e-commerce.add-product',
+                    // "Product List" => "e-commerce.product-list"
+                ];
+            @endphp
             <a href="javascript:void(0);" class="sidebar-menu">
                 <span class="sidebar-menu-icon">
                     <i data-feather="shopping-bag"></i>
                 </span>
                 <span class="sidebar-menu-text">Ecommerce</span>
-                <span class="sidebar-menu-arrow {{ request()->is("e-commerce/*") ? "rotate" : "" }}">
+                <span class="sidebar-menu-arrow {{ request()->is('e-commerce/*') ? 'rotate' : '' }}">
                     <i data-feather="chevron-right"></i>
                 </span>
             </a>
-            <ul class="sidebar-submenu"
-                @if (request()->is("e-commerce/*"))
-                style="height: 180px"
-                @endif
-            >
-                @php
-                    $menu_items = [
-                        "Add Category" => "e-commerce.add-category",
-                        "Category List" => "e-commerce.category-list",
-                        "Add Brand" => "e-commerce.add-brand",
-                        "Add Product" => "e-commerce.add-product",
-                        "Product List" => "e-commerce.product-list"
-                    ];
-                @endphp
+            <ul class="sidebar-submenu" @if (request()->is('e-commerce/*')) style="height: 180px" @endif>
+
 
                 @foreach ($menu_items as $label => $route)
-                    @include("admin.partials.sidebar.item", [
-                        "route_name" => $route,
-                        "label" => $label
+                    @include('admin.partials.sidebar.item', [
+                        'label' => $label,
+                        'route_name' => $route,
                     ])
                 @endforeach
 
+                {{-- <li>
+                    <a href="{{route('make.index')}}" class="sidebar-submenu-item">Add Make</a>
+                </li> --}}
 
                 {{-- <li>
-            <a href="./order-list.html" class="sidebar-submenu-item"> Order List </a>
-          </li>
-          <li>
-            <a href="./order-details.html" class="sidebar-submenu-item"> Order Details </a>
-          </li>
-          <li>
-            <a href="./customer-list.html" class="sidebar-submenu-item"> Customer List </a>
-          </li> --}}
+                <a href="./order-list.html" class="sidebar-submenu-item"> Order List </a>
+            </li>
+            <li>
+                <a href="./order-details.html" class="sidebar-submenu-item"> Order Details </a>
+            </li>
+            <li>
+                <a href="./customer-list.html" class="sidebar-submenu-item"> Customer List </a>
+            </li> --}}
             </ul>
         </li>
         <!-- Users -->
@@ -157,7 +176,7 @@
             </ul>
         </li>
         <!--  Commponents  -->
-        <div class="sidebar-menu-header">Components</div>
+        {{-- <div class="sidebar-menu-header">Components</div>
         <!-- Common  -->
 
         <li>
@@ -323,7 +342,7 @@
                 </span>
                 <span class="sidebar-menu-text">Typography</span>
             </a>
-        </li>
+        </li> --}}
         <!--  Pages  -->
         <div class="sidebar-menu-header">Pages</div>
         <!-- Authentication  -->

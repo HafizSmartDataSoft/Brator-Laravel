@@ -1,6 +1,6 @@
 const customDragAndDropSourceCode = `
   <div class="dropzone dropzone-custom">
-    <div class="dz-message">                        
+    <div class="dz-message">
       <i width="2.5rem" height="2.5rem" data-feather="upload"></i>
       <h5>Choose a file or drag  & drop here</h5>
       <p class="text-sm text-slate-400">

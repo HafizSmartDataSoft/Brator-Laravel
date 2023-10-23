@@ -2,12 +2,14 @@ import './bootstrap';
 import 'simplebar';
 import ResizeObserver from 'resize-observer-polyfill';
 import feather from 'feather-icons';
+import Dropzone from 'dropzone';
 
 import sidebar from './components/sidebar';
 import dropdown from './components/dropdown';
 import datepicker from './components/datepicker';
 import select from './components/select';
-import swalModal from './components/swal';
+// import swalModal from './components/swal';
+import uploader from './components/uploader';
 
 import Alpine from 'alpinejs';
 
@@ -17,7 +19,8 @@ Alpine.start();
 
 // Initialize sidebar
 sidebar.init();
-
+// Initialize uploader
+uploader.init();
 // Initialize datepicker
 datepicker.init();
 
@@ -31,9 +34,10 @@ select.init();
 feather.replace();
 
 
-// Initialize Swal
-swalModal.init();
+// // Initialize Swal
+// swalModal.init();
 
 
 // Polyfill for ResizeObserver
 window.ResizeObserver = ResizeObserver;
+

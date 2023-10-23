@@ -1,8 +1,7 @@
 <meta name="title" content="Site Title (Characters left: 65)">
 <meta name="description"
-    content="Admin Toolkit is a modern admin dashboard template based on Tailwindcss. It comes with a variety of useful ui components and pre-built pages"
-/>
-    {{--
+    content="Brator is a modern admin dashboard template based on Tailwindcss. It comes with a variety of useful ui components and pre-built pages" />
+{{--
     <meta name="title" content="Site Title (Characters left: 65)">
     <meta name="description" content="Site Description ">
     <meta name="keywords" content="a,b,c,d,e">

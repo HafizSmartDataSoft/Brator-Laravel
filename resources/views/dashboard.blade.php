@@ -524,7 +524,7 @@
             <p class="text-sm">
               Copyright © 2023
               <a class="text-primary-500 hover:underline" href="https://getadmintoolkit.com" target="_blank">
-                Admin Toolkit
+                Brator
               </a>
             </p>
 
