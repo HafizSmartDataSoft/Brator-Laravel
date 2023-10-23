@@ -35,7 +35,6 @@
             <form class="" id="myForm" action="{{ route('product.store') }}" method="POST"
                 enctype="multipart/form-data">
                 @csrf
-
                 <div class="p-4 mb-4 text-sm text-red-500 rounded-lg  dark:bg-gray-800 dark:text-red-400" role="alert">
                     @foreach ($errors->get('sku') as $message)
                         {{ $message }}<br>
