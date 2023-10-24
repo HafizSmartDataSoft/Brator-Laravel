@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Models\ImageSetting;
+use App\Models\TypeWorkOn;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ProductRequest extends FormRequest
@@ -35,14 +37,39 @@ class ProductRequest extends FormRequest
 
     public function messages()
     {
-            $images = session()->get('product.gallery');
-            // return $images;
-            if (is_array($images)) {
-                foreach ($images as $image) {
-                    unlink($image);
-                }
-                session()->forget('product.gallery');
-            }
+        // dd(0);
+        // $workOns = TypeWorkOn::where('work_on', 'product')->get();
+        // $workOns = $workOns->pluck('type_id');
+        // $imageSettings = ImageSetting::find($workOns)->where('status', 1);
+        // // $deleted = ProductImage::where('product_id', $product->id)->delete();
+        // // $count = 0;
+        // foreach ($imageSettings as $imageSetting) {
+        //     $typeName = $imageSetting->type_name;
+        //     $images = session()->get('product' . $typeName);
+        //     if (is_array($images)) {
+        //         // if ($count == 0) {
+        //         //     $gallaryImages = ProductImage::where('product_id', $product->id)->get();
+        //         //     foreach ($gallaryImages as $gallaryImage) {
+        //         //         unlink($gallaryImage->image);
+        //         //     }
+        //         //     $deleted = ProductImage::where('product_id', $product->id)->delete();
+        //         // }
+        //         foreach ($images as $image) {
+        //             unlink($image);
+        //         }
+        //     }
+        //     // $count++;
+        //     session()->forget('product' . $typeName);
+        // }
+
+        // $images = session()->get('product.gallery');
+        // // return $images;
+        // if (is_array($images)) {
+        //     foreach ($images as $image) {
+        //         unlink($image);
+        //     }
+        //     session()->forget('product.gallery');
+        // }
         return [
             'name.required' => 'The name is required.',
             'sku.required' => 'The Sku  field must be unique.',

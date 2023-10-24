@@ -469,43 +469,38 @@ class ProductViewController extends Controller
         }
     }
 
-    public function dropzoneImage(Request $request)
-    {
-        // $file = $request->file('file');
-        // return $request;
+    // public function dropzoneImage(Request $request)
+    // {
+    //     // $file = $request->file('file');
+    //     // return $request;
+    //     $image = $request->file('file');
+    //     $imageName = rand() . '.' . $image->getClientOriginalExtension();
+    //     $directory = 'assets/frontend/product/gallery-images/';
+    //     $imageUrl = $directory . $imageName;
+    //     $image->move($directory, $imageName);
+    //     $workOns = TypeWorkOn::where('work_on', 'product')->get();
+    //     $workOns = $workOns->pluck('type_id');
+    //     $imageSettings = ImageSetting::find($workOns)->where('status', 1);
+    //     foreach ($imageSettings as $imageSetting) {
+    //         if ($imageSetting) {
+    //             $typeName = $imageSetting->type_name;
+    //             $width = $imageSetting->width;
+    //             $height = $imageSetting->height;
+    //             $image = $request->file('file');
+    //             $image = Image::make($image);
+    //             $image->resize($width, $height);
+    //             $imageName = rand() . '.' . $image->getClientOriginalExtension();
+    //             $directory = 'assets/frontend/product/' . $typeName . '/';
+    //             $imageUrl = $directory . $imageName;
+    //             $image->move($directory, $imageName);
+    //             session()->push('product' . $typeName, $imageUrl);
+    //         }
+    //     }
+    //     // return $imageUrl;
+    //     // return asset($imageUrl);
+    //     // session()->forget('product.gallary');
+    //     session()->push('product.gallary', $imageUrl);
+    //     return $imageUrl;
+    // }
 
-        $image = $request->file('file');
-        $imageName = rand() . '.' . $image->getClientOriginalExtension();
-        $directory = 'assets/frontend/product/gallery-images/';
-        $imageUrl = $directory . $imageName;
-        $image->move($directory, $imageName);
-
-        $workOns = TypeWorkOn::where('work_on', 'product')->get();
-        $workOns = $workOns->pluck('type_id');
-        $imageSettings = ImageSetting::find($workOns)->where('status', 1);
-
-        foreach ($imageSettings as $imageSetting) {
-            if ($imageSetting) {
-                $typeName = $imageSetting->type_name;
-                $width = $imageSetting->width;
-                $height = $imageSetting->height;
-                $image = $request->file('file');
-                $image = Image::make($image);
-                $image->resize($width, $height);
-                $imageName = rand() . '.' . $image->getClientOriginalExtension();
-                $directory = 'assets/frontend/product/' . $typeName . '/';
-                $imageUrl = $directory . $imageName;
-                $image->move($directory, $imageName);
-                session()->push('product' . $typeName, $imageUrl);
-            }
-        }
-
-        // return $imageUrl;
-
-        // return asset($imageUrl);
-        // session()->forget('product.gallary');
-        session()->push('product.gallary', $imageUrl);
-
-        return $imageUrl;
-    }
 }

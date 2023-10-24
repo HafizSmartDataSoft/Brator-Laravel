@@ -12,9 +12,9 @@
                         <ul>
                             <li><a href="#_">Home</a></li>
                             <li><a href="#_">All Categories</a></li>
-                                    <li><a
-                                            href="{{ route('product-category.show', ['product_category' => $parent_category->slug]) }}">{{ $parent_category->name }}</a>
-                                    </li>
+                            <li><a
+                                    href="{{ route('product-category.show', ['product_category' => $parent_category->slug]) }}">{{ $parent_category->name }}</a>
+                            </li>
 
                             @foreach ($sub_categories as $sub_category)
                                 <li><a
@@ -48,9 +48,11 @@
                                         </li> --}}
                                         @if (count($gallaryImages) != 0)
                                             @foreach ($gallaryImages as $gallaryImage)
-                                                <li><a class="js-tabs__title" href="#"
-                                                        style="background-image:url({{ asset($gallaryImage->image) }})"></a>
-                                                </li>
+                                                @if ($gallaryImage->image_type == 'small_default' && $gallaryImage->image_type != null)
+                                                    <li><a class="js-tabs__title" href="#"
+                                                            style="background-image:url({{ asset($gallaryImage->image) }})"></a>
+                                                    </li>
+                                                @endif
                                             @endforeach
                                         @else
                                             <li><a class="js-tabs__title" href="#"
@@ -60,37 +62,16 @@
                                     </ul>
                                 </div>
 
-                                {{-- <div class="js-tabs__content brator-product-img-tab-item"><img data-action="zoom"
-                                        class="lazyload"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        data-src="{{ asset('assets/frontend') }}/images/product-tab-img-01.jpeg"
-                                        alt="alt" />
-                                    <p>click image to zoom in</p>
-                                </div>
-
-                                <div class="js-tabs__content brator-product-img-tab-item"><img data-action="zoom"
-                                        class="lazyload"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        data-src="{{ asset('assets/frontend') }}/images/product-tab-img-02.jpeg"
-                                        alt="alt" />
-                                    <p>click image to zoom in</p>
-                                </div>
-
-                                <div class="js-tabs__content brator-product-img-tab-item"><img data-action="zoom"
-                                        class="lazyload"
-                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        data-src="{{ asset('assets/frontend') }}/images/product-tab-img-03.jpeg"
-                                        alt="alt" />
-                                    <p>click image to zoom in</p>
-                                </div> --}}
                                 @if (count($gallaryImages) != 0)
                                     @foreach ($gallaryImages as $gallaryImage)
+                                    @if ($gallaryImage->image_type == 'large_default' && $gallaryImage->image_type != null)
                                         <div class="js-tabs__content brator-product-img-tab-item"><img data-action="zoom"
                                                 class="lazyload"
                                                 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                                 data-src="{{ asset($gallaryImage->image) }}" alt="alt" />
                                             <p>click image to zoom in</p>
                                         </div>
+                                        @endif
                                     @endforeach
                                 @else
                                     <div class="js-tabs__content brator-product-img-tab-item"><img data-action="zoom"
@@ -218,8 +199,8 @@
                                             <div class="brator-product-single-light-info-s cat">
                                                 <h5>Categories: </h5>
 
-                                                        <a
-                                                            href="{{ route('product-category.show', ['product_category' => $parent_category->slug]) }}">{{ $parent_category->name }}</a>
+                                                <a
+                                                    href="{{ route('product-category.show', ['product_category' => $parent_category->slug]) }}">{{ $parent_category->name }}</a>
 
                                             </div>
                                             <div class="brator-product-single-light-info-s">
@@ -682,7 +663,7 @@
                         <div class="js-tabs__content brator-product-single-tab-item">
                             <p>
                                 {{ $product_detail->description }}
-                            </p><img src="{{asset($product_detail->featured_image)}}" alt="alt" />
+                            </p><img src="{{ asset($product_detail->featured_image) }}" alt="alt" />
                             {{-- <h6> </h6>
                             <ul>
                                 <li>Plastic Hub Centering Ring Ensures a Vibration Free Ride</li>
@@ -1717,8 +1698,8 @@
                 },
                 success: function(data) {
                     setTimeout(function() {
-                                alert("The Product is Added to Compare!");
-                            }, 500);
+                        alert("The Product is Added to Compare!");
+                    }, 500);
                     // console.log(data);
                     // Update the product list or grid with sorted data
                     // You can replace the content of the product grid or list with the sorted data here.

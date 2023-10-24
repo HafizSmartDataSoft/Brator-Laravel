@@ -69,12 +69,12 @@ class ImageSettingController extends Controller
      */
     public function edit(ImageSetting $imageSetting)
     {
-        $workOns=$imageSetting->workOn;
+        $workOns = $imageSetting->workOn;
         // return $workOns;
         return view(
             'admin.image-setting.edit',
             [
-                "imageSetting"=>$imageSetting,
+                "imageSetting" => $imageSetting,
                 "workOns" => $workOns,
             ]
         );
@@ -106,7 +106,15 @@ class ImageSettingController extends Controller
         return redirect('admin/image-setting');
         // return $request;
     }
-
+    public function getImageSetting(Request $request)
+    {
+        // return $request;
+        $makeId = $request->input('make_id');
+        $models = TypeWorkOn::where('work_on', $makeId)->distinct()->pluck('type_id');
+        // $models = TypeWorkOn::where('work_on', $makeId)->get();
+        $models = ImageSetting::find($models);
+        return $models;
+    }
     /**
      * Remove the specified resource from storage.
      */

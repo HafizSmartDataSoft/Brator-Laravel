@@ -110,6 +110,7 @@ Route::post('product/checkout', [ProductViewController::class, 'checkout'])->nam
 
 Route::post('/get-year-data', [ProductController::class, 'getYear'])->name('get-year-data');
 Route::post('/get-model-data', [ProductController::class, 'getModel'])->name('get-model-data');
+Route::post('/get-image-settings', [ImageSettingController::class, 'getImageSetting'])->name('get-image-settings');
 Route::get('/products/sort', [ProductController::class, 'sort'])->name('products.sort');
 
 

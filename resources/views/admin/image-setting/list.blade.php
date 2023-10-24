@@ -160,28 +160,28 @@
                                     @php
                                         $count = 0;
                                     @endphp
-                                        <td>
+                                    <td>
 
-                                            @foreach ($work_ons as $work_on)
-                                                @if ($work_on->work_on == 'brand' && $image_setting->id == $work_on->type_id)
-                                                    @php
-                                                        $count = 1;
-                                                    @endphp
-                                                    <div class="badge badge-soft-success">
-                                                        &#10003
-                                                    </div>
-                                                @endif
-                                            @endforeach
-
-                                            @if ($count != 1)
-                                                <div class="badge badge-soft-danger">
-                                                    &#10006
+                                        @foreach ($work_ons as $work_on)
+                                            @if ($work_on->work_on == 'brand' && $image_setting->id == $work_on->type_id)
+                                                @php
+                                                    $count = 1;
+                                                @endphp
+                                                <div class="badge badge-soft-success">
+                                                    &#10003
                                                 </div>
                                             @endif
-                                        </td>
-                                        @php
-                                            $count = 0;
-                                        @endphp
+                                        @endforeach
+
+                                        @if ($count != 1)
+                                            <div class="badge badge-soft-danger">
+                                                &#10006
+                                            </div>
+                                        @endif
+                                    </td>
+                                    @php
+                                        $count = 0;
+                                    @endphp
                                     <td>
                                         <div class="badge badge-soft-success">
                                             {{ $image_setting->status == '0' ? 'In Active' : '' }}
@@ -218,8 +218,8 @@
                                                                     method="post">
                                                                     @method('DELETE')
                                                                     @csrf
-                                                                    <input type="hidden" value="{{ $image_setting->id }}"
-                                                                        name="order_id">
+                                                                    <input type="hidden"
+                                                                        value="{{ $image_setting->id }}" name="order_id">
                                                                     <input type="submit" value="Delete"
                                                                         onclick="return confirm('Do you want to Delete Image Setting !')">
                                                                 </form>
@@ -236,6 +236,9 @@
                     </table>
                 </div>
                 <!-- Image Setting Table Ends -->
+
+
+
                 <!-- Image Setting Pagination Starts -->
                 <div class="flex flex-col items-center justify-between gap-y-4 md:flex-row">
                     <p class="text-xs font-normal text-slate-400">Showing 1 to 10 of 50 result</p>
@@ -271,6 +274,62 @@
                     </nav>
                 </div>
                 <!-- Image Setting Pagination Ends -->
+                <!-- Image Regenerate thumbnails Starts -->
+                <form class="" action="{{ route('product-tag.store') }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="p-4 mb-4 text-sm text-red-500 rounded-lg  dark:bg-gray-800 dark:text-red-400"
+                        role="alert">
+                        @error('name')
+                            {{ $message }}
+                        @enderror
+                    </div>
+                    <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+                        <!-- Left side Div Start -->
+
+                        <!-- Left Side Div End  -->
+
+                        <!-- Right Side Div Start  -->
+                        <section class="h-full lg:col-span-1">
+                            <!-- Organization -->
+                            <div class="sticky top-20 rounded-primary bg-white p-6 shadow dark:bg-slate-800">
+                                <h5 class="m-0 p-0 text-xl font-semibold text-slate-700 dark:text-slate-200">
+                                    Regenerate thumbnails</h5>
+                                <p class="mb-4 p-0 text-sm font-normal text-slate-400"> </p>
+                                <div class="flex flex-col gap-4">
+
+                                    <div class="flex flex-col gap-4">
+                                        <div>
+                                            <label class="label  mb-1 font-medium" for="status"> Select an image
+                                            </label>
+                                            <select name="image_setting_type" id="makeSelect" class="select">
+                                                <option value="all">All</option>
+                                                <option value="product">Product</option>
+                                                <option value="category">Categories</option>
+                                                <option value="brand">Brands</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="label label-required mb-1 font-medium" for="status"> Select a
+                                            format
+                                        </label>
+                                        <select name="status" class="select" id="modelSelect">
+                                            <option value=""></option>
+
+                                        </select>
+                                    </div>
+                                    <div class="mt-6 flex w-full items-center justify-end">
+                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </section>
+                        <!-- Right Side Div End  -->
+                    </div>
+                </form>
+                <!-- Image Regenerate thumbnails Ends -->
             </div>
             <!-- Image Setting List Ends -->
         </main>
@@ -292,4 +351,52 @@
         </footer>
         <!-- Footer Ends -->
     </div>
+@endsection
+@section('js')
+    <script>
+        // Get a reference to the select element
+        const makeSelect = document.getElementById('makeSelect');
+        // let optionsHTMLStr = ""
+        var selectedMake;
+        // Add an event listener to listen for the "change" event
+        makeSelect.addEventListener('change', function() {
+            // Get the selected value
+            selectedMake = makeSelect.value;
+            // Do something with the selected value, for example, log it to the console
+            const dataToSend = {
+                make_id: selectedMake,
+            };
+
+            var select = document.getElementById('modelSelect');
+            axios.post('/get-image-settings', dataToSend)
+                .then(function(response) {
+                    console.log(response);
+                    var modelSelect = document.getElementById('modelSelect'),
+                        optionsHTML_Arr = [],
+                        j = response.data.length;
+                    console.log(response.data);
+
+                    optionsHTML_Arr.push(
+                        `<option value=""></option>`
+                    );
+                    for (var i = 0; i < j; i++) {
+                        // console.log(response.data[i].id);
+                        // console.log(response.data[i].name);
+
+                        // data = response.data[i];
+                        // console.log(data);
+
+                        optionsHTML_Arr.push(
+                            `<option value="${response.data[i].id}"> ${response.data[i].type_name}</option>`
+                        );
+                    }
+                    modelSelect.innerHTML = optionsHTML_Arr.join('');
+                    // console.log(optionsHTML_Arr);
+                    // console.log(response.data);
+                })
+                .catch(function(error) {
+                    console.error("Error making the Axios POST request:", error);
+                });
+        });
+    </script>
 @endsection

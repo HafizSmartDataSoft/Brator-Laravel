@@ -101,13 +101,13 @@
                                 <div class="flex w-full flex-col md:w-auto">
                                     <label class="label label-required mb-1 font-medium" for="base-price"> Base
                                         Price </label>
-                                    <input name="base_price" type="text" class="input" id="base-price"
+                                    <input name="base_price" type="number" class="input" id="base-price"
                                         value="{{ old('base_price') ?? ($product->base_price ?? '') }}" />
                                     <p class="help-text mt-1">Set the product regular price</p>
                                 </div>
                                 <div class="flex w-full flex-col md:w-auto">
                                     <label class="label mb-1 font-medium" for="sale-price"> Sale Price </label>
-                                    <input name="sale_price" type="text" class="input" id="sale-price"
+                                    <input name="sale_price" type="number" class="input" id="sale-price"
                                         value="{{ old('sale_price') ?? ($product->sale_price ?? '') }}" />
                                     <p class="help-text mt-1">Set the product offer price</p>
                                 </div>
@@ -115,13 +115,13 @@
                             <div class="grid w-full grid-cols-1 gap-4 py-2 md:grid-cols-2">
                                 <div class="flex w-full flex-col md:w-auto">
                                     <label class="label mb-1 font-medium" for="cost-price"> Cost Price </label>
-                                    <input name="cost_price" type="text" class="input" id="cost-price"
+                                    <input name="cost_price" type="number" class="input" id="cost-price"
                                         value="{{ old('cost_price') ?? ($product->cost_price ?? '') }}" />
                                     <p class="help-text mt-1">Set the cost price of the product</p>
                                 </div>
                                 <div class="flex w-full flex-col md:w-auto">
                                     <label class="label mb-1 font-medium" for="tax-amount"> Tax Amount (%) </label>
-                                    <input name="tax" type="text" class="input" id="tax-amount"
+                                    <input name="tax" type="number" class="input" id="tax-amount"
                                         value="{{ old('tax') ?? ($product->tax ?? '') }}" />
                                     <p class="help-text mt-1">Set the product tax amount in percentage (%)</p>
                                 </div>
@@ -254,6 +254,7 @@
                                     <p class="help-text mt-1">Enter low stock quantity alert threshold</p>
                                 </div>
                             </div>
+
                             <!-- <div class="grid w-full grid-cols-1 gap-4 py-2 md:grid-cols-2">
                                                                                                                                                                                                                                                                                                                                     <div class="flex w-full flex-col md:w-auto">
                                                                                                                                                                                                                                                                                                                                         <label class="label label-required mb-1 font-medium" for="sku"> Minimum Order

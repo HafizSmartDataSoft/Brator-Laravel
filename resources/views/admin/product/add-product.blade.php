@@ -63,68 +63,68 @@
                 <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
                     <!-- Left side Div Start -->
                     <section class="flex flex-col gap-8 lg:col-span-2">
-                             <!-- General  -->
-                             <div class="rounded-primary bg-white p-6 shadow-sm dark:bg-slate-800">
-                                <h5 class="m-0 p-0 text-xl font-semibold text-slate-700 dark:text-slate-200">General
-                                </h5>
-                                <p class="mb-4 p-0 text-sm font-normal text-slate-400">
-                                    Basic information of your product
-                                </p>
+                        <!-- General  -->
+                        <div class="rounded-primary bg-white p-6 shadow-sm dark:bg-slate-800">
+                            <h5 class="m-0 p-0 text-xl font-semibold text-slate-700 dark:text-slate-200">General
+                            </h5>
+                            <p class="mb-4 p-0 text-sm font-normal text-slate-400">
+                                Basic information of your product
+                            </p>
 
-                                <div class="py-2">
-                                    <label class="label label-required mb-1 font-medium" for="name">Product Name
-                                    </label>
-                                    <input name="name" type="text" class="input" id="name"
-                                        value="{{ old('name') ?? ('') }}" />
+                            <div class="py-2">
+                                <label class="label label-required mb-1 font-medium" for="name">Product Name
+                                </label>
+                                <input name="name" type="text" class="input" id="name"
+                                    value="{{ old('name') ?? '' }}" />
+                            </div>
+                            <div class="py-2">
+                                <label class="label label-required mb-1 font-medium" for="code">SKU
+                                </label>
+                                <input name="sku" type="text" class="input" id="code"
+                                    value="{{ old('sku') ?? '' }}" />
+                            </div>
+                            <div class="py-2">
+                                <label class="label label-required mb-1 font-medium"> Description </label>
+                                <textarea name="description" class="textarea text-start" rows="5" placeholder="Write message">{{ old('description') }} </textarea>
+                            </div>
+                        </div>
+                        <!-- Pricing  -->
+                        <div class="rounded-primary bg-white p-6 shadow-sm dark:bg-slate-800">
+                            <h5 class="m-0 p-0 text-xl font-semibold text-slate-700 dark:text-slate-200">Pricing
+                            </h5>
+                            <p class="mb-4 p-0 text-sm font-normal text-slate-400">
+                                Set your pricing strategies to stay ahead of the competition
+                            </p>
+                            <div class="grid w-full grid-cols-1 gap-4 py-2 md:grid-cols-2">
+                                <div class="flex w-full flex-col md:w-auto">
+                                    <label class="label label-required mb-1 font-medium" for="base-price"> Base
+                                        Price </label>
+                                    <input name="base_price" type="number" class="input" id="base-price"
+                                        value="{{ old('base_price') ?? '' }}" />
+                                    <p class="help-text mt-1">Set the product regular price</p>
                                 </div>
-                                <div class="py-2">
-                                    <label class="label label-required mb-1 font-medium" for="code">SKU
-                                    </label>
-                                    <input name="sku" type="text" class="input" id="code"
-                                        value="{{ old('sku') ?? ('') }}" />
-                                </div>
-                                <div class="py-2">
-                                    <label class="label label-required mb-1 font-medium"> Description </label>
-                                    <textarea name="description" class="textarea text-start" rows="5" placeholder="Write message">{{ old('description')}} </textarea>
+                                <div class="flex w-full flex-col md:w-auto">
+                                    <label class="label mb-1 font-medium" for="sale-price"> Sale Price </label>
+                                    <input name="sale_price" type="number" class="input" id="sale-price"
+                                        value="{{ old('sale_price') ?? '' }}" />
+                                    <p class="help-text mt-1">Set the product offer price</p>
                                 </div>
                             </div>
-                            <!-- Pricing  -->
-                            <div class="rounded-primary bg-white p-6 shadow-sm dark:bg-slate-800">
-                                <h5 class="m-0 p-0 text-xl font-semibold text-slate-700 dark:text-slate-200">Pricing
-                                </h5>
-                                <p class="mb-4 p-0 text-sm font-normal text-slate-400">
-                                    Set your pricing strategies to stay ahead of the competition
-                                </p>
-                                <div class="grid w-full grid-cols-1 gap-4 py-2 md:grid-cols-2">
-                                    <div class="flex w-full flex-col md:w-auto">
-                                        <label class="label label-required mb-1 font-medium" for="base-price"> Base
-                                            Price </label>
-                                        <input name="base_price" type="text" class="input" id="base-price"
-                                            value="{{ old('base_price') ?? ('') }}" />
-                                        <p class="help-text mt-1">Set the product regular price</p>
-                                    </div>
-                                    <div class="flex w-full flex-col md:w-auto">
-                                        <label class="label mb-1 font-medium" for="sale-price"> Sale Price </label>
-                                        <input name="sale_price" type="text" class="input" id="sale-price"
-                                            value="{{ old('sale_price') ?? ( '') }}" />
-                                        <p class="help-text mt-1">Set the product offer price</p>
-                                    </div>
+                            <div class="grid w-full grid-cols-1 gap-4 py-2 md:grid-cols-2">
+                                <div class="flex w-full flex-col md:w-auto">
+                                    <label class="label mb-1 font-medium" for="cost-price"> Cost Price </label>
+                                    <input name="cost_price" type="number" class="input" id="cost-price"
+                                        value="{{ old('cost_price') ?? '' }}" />
+                                    <p class="help-text mt-1">Set the cost price of the product</p>
                                 </div>
-                                <div class="grid w-full grid-cols-1 gap-4 py-2 md:grid-cols-2">
-                                    <div class="flex w-full flex-col md:w-auto">
-                                        <label class="label mb-1 font-medium" for="cost-price"> Cost Price </label>
-                                        <input name="cost_price" type="text" class="input" id="cost-price"
-                                            value="{{ old('cost_price') ?? ('') }}" />
-                                        <p class="help-text mt-1">Set the cost price of the product</p>
-                                    </div>
-                                    <div class="flex w-full flex-col md:w-auto">
-                                        <label class="label mb-1 font-medium" for="tax-amount"> Tax Amount (%) </label>
-                                        <input name="tax" type="text" class="input" id="tax-amount"
-                                            value="{{ old('tax') ?? ('') }}" />
-                                        <p class="help-text mt-1">Set the product tax amount in percentage (%)</p>
-                                    </div>
+                                <div class="flex w-full flex-col md:w-auto">
+                                    <label class="label mb-1 font-medium" for="tax-amount"> Tax Amount (%) </label>
+                                    <input name="tax" type="number" class="input" id="tax-amount"
+                                        value="{{ old('tax') ?? '' }}" />
+                                    <p class="help-text mt-1">Set the product tax amount in percentage (%)</p>
                                 </div>
                             </div>
+                        </div>
 
                         <!-- Featured image  -->
                         <div class="rounded-primary bg-white p-6 shadow-sm dark:bg-slate-800">
@@ -184,45 +184,45 @@
                             <p class="mb-4 p-0 text-sm font-normal text-slate-400">Manage and track your product
                                 stocks</p>
                             <!-- <div class="grid w-full grid-cols-1 gap-4 py-2 md:grid-cols-2">
-                                                                                                                                                                                                                                                                    <div class="flex w-full flex-col md:w-auto">
-                                                                                                                                                                                                                                                                        <label class="label label-required mb-1 font-medium" for="sku"> SKU </label>
-                                                                                                                                                                                                                                                                        <input type="text" class="input" id="sku" value="MBP1001" />
-                                                                                                                                                                                                                                                                        <p class="help-text mt-1">Product Stock Keeping Unit</p>
-                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                                    <div class="flex w-full flex-col md:w-auto">
-                                                                                                                                                                                                                                                                        <label class="label mb-1 font-medium" for="sale-price"> Barcode </label>
-                                                                                                                                                                                                                                                                        <input type="text" class="input" id="sale-price" value="MBP1001" />
-                                                                                                                                                                                                                                                                        <p class="help-text mt-1">Supported Format (ISBN, UPC, GTIN, etc.)</p>
-                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                                </div> -->
+                                                                                                                                                                                                                                                                            <div class="flex w-full flex-col md:w-auto">
+                                                                                                                                                                                                                                                                                <label class="label label-required mb-1 font-medium" for="sku"> SKU </label>
+                                                                                                                                                                                                                                                                                <input type="text" class="input" id="sku" value="MBP1001" />
+                                                                                                                                                                                                                                                                                <p class="help-text mt-1">Product Stock Keeping Unit</p>
+                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                            <div class="flex w-full flex-col md:w-auto">
+                                                                                                                                                                                                                                                                                <label class="label mb-1 font-medium" for="sale-price"> Barcode </label>
+                                                                                                                                                                                                                                                                                <input type="text" class="input" id="sale-price" value="MBP1001" />
+                                                                                                                                                                                                                                                                                <p class="help-text mt-1">Supported Format (ISBN, UPC, GTIN, etc.)</p>
+                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                        </div> -->
                             <div class="grid w-full grid-cols-1 gap-4 py-2 md:grid-cols-2">
                                 <div class="flex w-full flex-col md:w-auto">
                                     <label class="label label-required mb-1 font-medium" for="stock-quantity"> Stock
                                         Quantity </label>
-                                    <input name="quantity" type="text" class="input" id="stock-quantity"
-                                        value="200" />
+                                    <input name="quantity" type="number" class="input" id="stock-quantity"
+                                        value="" />
                                     <p class="help-text mt-1">Enter available stock quantity</p>
                                 </div>
                                 <div class="flex w-full flex-col md:w-auto">
                                     <label class="label mb-1 font-medium" for="low-stock-threshold"> Low Stock
                                         Threshold </label>
-                                    <input name="alert_threshold" type="text" class="input" id="low-stock-threshold"
-                                        value="50" />
+                                    <input name="alert_threshold" type="number" class="input" id="low-stock-threshold"
+                                        value="" />
                                     <p class="help-text mt-1">Enter low stock quantity alert threshold</p>
                                 </div>
                             </div>
                             <!-- <div class="grid w-full grid-cols-1 gap-4 py-2 md:grid-cols-2">
-                                                                                                                                                                                                                                                                    <div class="flex w-full flex-col md:w-auto">
-                                                                                                                                                                                                                                                                        <label class="label label-required mb-1 font-medium" for="sku"> Minimum Order
-                                                                                                                                                                                                                                                                            QTY
-                                                                                                                                                                                                                                                                        </label>
-                                                                                                                                                                                                                                                                         <input name="year_id" type="text" class="input" id="sku" value="01" />
-                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                                    <div class="flex w-full flex-col md:w-auto">
-                                                                                                                                                                                                                                                                        <label class="label mb-1 font-medium" for="sale-price"> Max Order QTY </label>
-                                                                                                                                                                                                                                                                         <input name="year_id" type="text" class="input" id="sale-price" value="10" />
-                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                                </div> -->
+                                                                                                                                                                                                                                                                            <div class="flex w-full flex-col md:w-auto">
+                                                                                                                                                                                                                                                                                <label class="label label-required mb-1 font-medium" for="sku"> Minimum Order
+                                                                                                                                                                                                                                                                                    QTY
+                                                                                                                                                                                                                                                                                </label>
+                                                                                                                                                                                                                                                                                 <input name="year_id" type="text" class="input" id="sku" value="01" />
+                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                            <div class="flex w-full flex-col md:w-auto">
+                                                                                                                                                                                                                                                                                <label class="label mb-1 font-medium" for="sale-price"> Max Order QTY </label>
+                                                                                                                                                                                                                                                                                 <input name="year_id" type="text" class="input" id="sale-price" value="10" />
+                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                        </div> -->
                         </div>
 
                     </section>
@@ -418,23 +418,28 @@
             const dataToSend = {
                 make_id: selectedMake,
             };
-
-            var vehicle_models = @json($vehicle_models);
+            // var vehicle_models = @json($vehicle_models);
             // console.log(vehicle_models[0].name);
 
             var select = document.getElementById('modelSelect');
             axios.post('/get-model-data', dataToSend)
                 .then(function(response) {
-
+                    console.log(response);
                     var modelSelect = document.getElementById('modelSelect'),
                         optionsHTML_Arr = [],
                         j = response.data.length;
+                    console.log(response.data);
+
+                    optionsHTML_Arr.push(
+                        `<option value=""></option>`
+                    );
+                    for (var i = 0; i < j ; i++) {
+                        // console.log(response.data[i].id);
+                        // console.log(response.data[i].name);
+                        // data = response.data[i];
+                        // console.log(data);
                         optionsHTML_Arr.push(
-                            `<option value=""></option>`
-                        );
-                    for (var i = 0; i < j; i += 1) {
-                        optionsHTML_Arr.push(
-                            `<option value="${vehicle_models[i].id}"> ${vehicle_models[i].name}</option>`
+                            `<option value="${response.data[i].id}"> ${response.data[i].name}</option>`
                         );
                     }
                     modelSelect.innerHTML = optionsHTML_Arr.join('');
@@ -474,9 +479,9 @@
                     var yearSelect = document.getElementById('yearSelect');
                     optionsHTML_Arr = [],
                         j = response.data.length;
-                        optionsHTML_Arr.push(
-                            `<option value=""></option>`
-                        );
+                    optionsHTML_Arr.push(
+                        `<option value=""></option>`
+                    );
                     for (var i = 0; i < j; i += 1) {
                         optionsHTML_Arr.push(
                             `<option value="${response.data[i].id}"> ${response.data[i].year}</option>`

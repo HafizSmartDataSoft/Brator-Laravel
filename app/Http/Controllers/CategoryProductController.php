@@ -8,7 +8,7 @@ use App\Models\DiscountSubCategory;
 use App\Models\Orderdetail;
 use App\Models\Customer;
 use App\Models\Discount;
-
+use App\Models\ProductImage;
 use Illuminate\Http\Request;
 
 class CategoryProductController extends Controller
@@ -176,6 +176,10 @@ class CategoryProductController extends Controller
 
         // }
         //find discount end
+
+
+
+        // return $home_imeges;
         return view(
             'frontend.product-category.category-products',
             [

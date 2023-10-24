@@ -165,25 +165,44 @@ class ProductController extends Controller
         //     }
         //     session()->forget('product.gallery');
         // }
+
         $workOns = TypeWorkOn::where('work_on', 'product')->get();
         $workOns = $workOns->pluck('type_id');
         $imageSettings = ImageSetting::find($workOns)->where('status', 1);
-        foreach ($imageSettings as $imageSetting) {
-            $typeName = $imageSetting->type_name;
-            $images = session()->get('product' . $typeName);
 
-            // session()->forget('product' . $typeName);
-            // return $images;
-            if (is_array($images)) {
-                foreach ($images as $image) {
-                    $gallaryImage = ProductImage::create([
-                        "product_id" => $product->id,
-                        "image" => $image,
-                        "image_type" => $typeName,
-                    ]);
-                }
+        // $deleted = ProductImage::where('product_id', $product->id)->delete();
+        $count = 0;
+        $main_images = session()->get('product.main');
+        // return $main_images;
+        if (is_array($main_images)) {
+            //first adding image main then type image
+            foreach ($main_images as $main_image) {
+                $gallaryImage = ProductImage::create([
+                    "product_id" => $product->id,
+                    "image" => $main_image,
+                    "image_type" => 'main',
+                ]);
+                // return $gallaryImage;
             }
-            session()->forget('product' . $typeName);
+            session()->forget('product.main');
+
+            foreach ($imageSettings as $imageSetting) {
+                $typeName = $imageSetting->type_name;
+                $images = session()->get('product' . $typeName);
+                // session()->forget('product' . $typeName);
+                // return $images;
+                if (is_array($images)) {
+                    foreach ($images as $image) {
+                        $gallaryImage = ProductImage::create([
+                            "product_id" => $product->id,
+                            "image" => $image,
+                            "image_type" => $typeName,
+                        ]);
+                    }
+                }
+                $count++;
+                session()->forget('product' . $typeName);
+            }
         }
 
         if ($product) {
@@ -221,6 +240,8 @@ class ProductController extends Controller
     }
     public function dropzoneImage(Request $request)
     {
+        session()->forget('product.main');
+
         $workOns = TypeWorkOn::where('work_on', 'product')->get();
         $workOns = $workOns->pluck('type_id');
         $imageSettings = ImageSetting::find($workOns)->where('status', 1);
@@ -230,27 +251,35 @@ class ProductController extends Controller
         // return $images;
 
         foreach ($images as $image) {
+            $main = $image;
+
             // dd($image->getClientOriginalName());
             $extention = $image->getClientOriginalExtension();
+
+            $main_directory = 'assets/frontend/product/gallery-images/';
+            $main_imageName = rand() . '.' . $main->getClientOriginalExtension();
+            $main_imageUrl = $main_directory . $main_imageName;
+            session()->push('product.main', $main_imageUrl);
+
+            // return $image;
+
+            // return $m_image;
+
             foreach ($imageSettings as $imageSetting) {
-            // for ($i = 0; $i < count($imageSettings); $i++) {
+                // for ($i = 0; $i < count($imageSettings); $i++) {
                 // dd($imageSettings);
                 // if ($imageSetting) {
                 $typeName = $imageSetting->type_name;
                 // $width = $imageSetting->width;
                 // $height = $imageSetting->height;
 
-                // $extension = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
                 // return $extension;
-
-                $imageName = rand() . '.' . $extention;
                 $directory = 'assets/frontend/product/gallery-images/';
+                $imageName = rand() . '.' . $extention;
                 $imageUrl = $directory . $imageName;
-
                 session()->push('product' . $typeName, $imageUrl);
-
                 $img = Image::make($image);
-                $img->resize($imageSetting->width, $imageSetting->height,function ($c) {
+                $img->resize($imageSetting->width, $imageSetting->height, function ($c) {
                     $c->aspectRatio();
                     $c->upsize();
                 });
@@ -260,6 +289,8 @@ class ProductController extends Controller
                 // $image->move($directory, $imageName);
                 // }
             }
+
+            $main->move($main_directory, $main_imageName);
         }
         return $imageUrl;
     }
@@ -303,6 +334,7 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
+
         // return $request;
         // $images = session()->get('product.gallery');
         // return $images;
@@ -352,33 +384,46 @@ class ProductController extends Controller
 
         // $deleted = ProductImage::where('product_id', $product->id)->delete();
         $count = 0;
-        foreach ($imageSettings as $imageSetting) {
-            $typeName = $imageSetting->type_name;
-            $images = session()->get('product' . $typeName);
+        $main_images = session()->get('product.main');
+        // return $main_images;
+        if (is_array($main_images)) {
 
-            // session()->forget('product' . $typeName);
-            // return $images;
-            if (is_array($images)) {
-                if ($count == 0) {
-                    $gallaryImages = ProductImage::where('product_id', $product->id)->get();
-                    foreach ($gallaryImages as $gallaryImage){
-                        unlink($gallaryImage->image);
-                    }
-                    $deleted = ProductImage::where('product_id', $product->id)->delete();
-                }
-
-                foreach ($images as $image) {
-                    $gallaryImage = ProductImage::create([
-                        "product_id" => $product->id,
-                        "image" => $image,
-                        "image_type" => $typeName,
-                    ]);
-                }
+            //deleting previous images
+            $gallaryImages = ProductImage::where('product_id', $product->id)->get();
+            foreach ($gallaryImages as $gallaryImage) {
+                unlink($gallaryImage->image);
             }
-            $count++;
-            session()->forget('product' . $typeName);
-        }
+            $deleted = ProductImage::where('product_id', $product->id)->delete();
 
+            //first adding image main then type image
+            foreach ($main_images as $main_image) {
+                $gallaryImage = ProductImage::create([
+                    "product_id" => $product->id,
+                    "image" => $main_image,
+                    "image_type" => 'main',
+                ]);
+                // return $gallaryImage;
+            }
+            session()->forget('product.main');
+
+            foreach ($imageSettings as $imageSetting) {
+                $typeName = $imageSetting->type_name;
+                $images = session()->get('product' . $typeName);
+                // session()->forget('product' . $typeName);
+                // return $images;
+                if (is_array($images)) {
+                    foreach ($images as $image) {
+                        $gallaryImage = ProductImage::create([
+                            "product_id" => $product->id,
+                            "image" => $image,
+                            "image_type" => $typeName,
+                        ]);
+                    }
+                }
+                $count++;
+                session()->forget('product' . $typeName);
+            }
+        }
         // $images = session()->get('product.gallery');
         // return $images;
 
@@ -421,7 +466,7 @@ class ProductController extends Controller
     {
         $gallaryImages = ProductImage::where('product_id', $product->id)->get();
 
-        foreach ($gallaryImages as $gallaryImage){
+        foreach ($gallaryImages as $gallaryImage) {
             unlink($gallaryImage->image);
         }
         $deleted = ProductImage::where('product_id', $product->id)->delete();
@@ -443,7 +488,9 @@ class ProductController extends Controller
     {
         // return $request;
         $makeId = $request->input('make_id');
-        $models = VehicleYear::where('make_id', $makeId)->distinct()->pluck('model_id');
+        // $models = VehicleYear::where('make_id', $makeId)->distinct()->pluck('model_id');
+        $models = VehicleYear::where('make_id', $makeId)->get();
+        $models = VehicleModel::find($models);
         return $models;
     }
 
@@ -463,12 +510,23 @@ class ProductController extends Controller
 
     public function saveImage($request)
     {
+        $home_default = ImageSetting::where('type_name', 'home_default')->where('status', 1)->first();
+        //resize working
+        // $image=Image::make($image)->driver('imagick');
+
         $image = $request->file('featured_image');
         $imageName = rand() . '.' . $image->getClientOriginalExtension();
         $directory = 'assets/frontend/product/featured_image/';
         $imageUrl = $directory . $imageName;
+        $img = Image::make($image);
 
-        $image->move($directory, $imageName);
+        $img->resize($home_default->width, $home_default->height, function ($c) {
+            $c->aspectRatio();
+            $c->upsize();
+        });
+        $img->save($directory . $imageName);
+
+        // $image->move($directory, $imageName);
         return $imageUrl;
     }
 

@@ -591,8 +591,8 @@ textarea::placeholder {
 }
 
 /*============================================
- * 1. Base Css 
- * ===========================================*/    
+ * 1. Base Css
+ * ===========================================*/
 * {
   box-sizing: border-box;
 }
@@ -4838,7 +4838,7 @@ h3.brator-blog-listing-single-item-title a {
 }
 
 
-.brator-parts-search-box-area.design-two .brator-parts-search-box-form .select2-container .select2-selection--single{ 
+.brator-parts-search-box-area.design-two .brator-parts-search-box-form .select2-container .select2-selection--single{
   display: block;
   width: 220px;
   height: 50px;
@@ -4847,7 +4847,7 @@ h3.brator-blog-listing-single-item-title a {
 
 
 }
-.brator-design-three .brator-parts-search-box-area.design-one .brator-parts-search-box-form .select2-container .select2-selection--single{ 
+.brator-design-three .brator-parts-search-box-area.design-one .brator-parts-search-box-form .select2-container .select2-selection--single{
   display: block;
   height: 50px;
   border-radius: 3px;
@@ -7040,12 +7040,14 @@ img.zoom-img {
   margin: 0;
   padding: 0;
 }
+
 .brator-review-comment-area .brator-review-comment {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 45px;
 }
+
 .brator-review-comment-area .brator-review-comment .brator-review-pint-count h6 {
   margin: 0;
   padding: 0;
@@ -7053,15 +7055,18 @@ img.zoom-img {
   color: #669900;
   font-weight: 600;
 }
+
 .brator-review-comment-area .brator-review-comment .brator-review-comment-count {
   align-items: center;
   display: flex;
   justify-content: flex-start;
   margin-left: 15px;
 }
+
 .brator-review-comment-area .brator-review-comment .brator-review-comment-count .brator-review-text {
   margin-left: 5px;
 }
+
 .brator-review-comment-area .brator-review-comment .brator-review-comment-count .brator-review-text p {
   margin: 0;
   padding: 0;
@@ -8611,7 +8616,7 @@ body {
   }
 }
 @media (max-width: 1600px) {
-  .brator-parts-search-box-area.design-two .brator-parts-search-box-form .select2-container .select2-selection--single{ 
+  .brator-parts-search-box-area.design-two .brator-parts-search-box-form .select2-container .select2-selection--single{
     width: 100%;
   }
 }
@@ -8681,7 +8686,7 @@ body {
   margin-top: -6px;
   margin-bottom: 10px;
 }
-  
+
 .brator-megasell-box .brator-megasell-content-box  h4{
   font-size: 30px;
   font-weight: 800;
@@ -8718,7 +8723,7 @@ body {
 
 
 .brator-service-area{
-  
+
 }
 
 .brator-service-area .col-lg-3{
@@ -8755,7 +8760,7 @@ body {
   transition: all linear 0.4s;
 }
 
-.brator-service-area .brator-single-service-item:hover .iocn{ 
+.brator-service-area .brator-single-service-item:hover .iocn{
   transform: rotatex(360deg);
 }
 
@@ -8820,13 +8825,13 @@ body {
 .braton-sponser-area .brator-brand-img a img{
   filter: grayscale(1);
   opacity: 0.5;
-  
+
 }
 .braton-sponser-area .brator-brand-img:hover a img{
   filter: grayscale(0);
   opacity: 1;
   transition: all linear 0.3s;
-  
+
 }
 
 .braton-sponser-area .sponser-row .col-xl-2{
@@ -9372,7 +9377,7 @@ body {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
   .brator-megasell-box .brator-megasell-content-box h1{
     font-size: 80px;
     line-height: 110px;
@@ -9476,7 +9481,7 @@ body {
   width: 16px;
   height: 16px;
   background: #fff;
-  transform: rotate( 
+  transform: rotate(
 45deg);
   border-bottom: 0;
   border-right: 0;
@@ -9522,15 +9527,15 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
-  
+
 }
 
 .brator-icon-link-text .vehicle-list-wapper .brator-parts-search-box-form{
   border: 0;
 }
 .brator-icon-link-text .select2-container--default .select2-selection--single{
-    border: 0;  
-    background: #f5f5fa;  
+    border: 0;
+    background: #f5f5fa;
     padding: 7px 0;
     height: 40px;
   }
@@ -9744,7 +9749,7 @@ ul.vehicle-list.empty {
         padding: 0;
     }
     .braton-sponser-area .row{
-        margin-left: 0;   
+        margin-left: 0;
         margin-right: 0;
     }
     .brator-categories-list-area.design-three.gray-bg .splide__arrows.style-three .splide__arrow{

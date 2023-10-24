@@ -689,8 +689,8 @@
                                                         </svg></a></div>
                                             </div>
                                             <div class="brator-product-single-item-img">
-                                                <a
-                                                    href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}">
+                                                <a href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}">
+
                                                     @if ($product->featured_image)
                                                         <img class="lazyload"
                                                             src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
