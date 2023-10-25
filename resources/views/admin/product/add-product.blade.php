@@ -428,7 +428,7 @@
                     var modelSelect = document.getElementById('modelSelect'),
                         optionsHTML_Arr = [],
                         j = response.data.length;
-                    console.log(response.data);
+                    // console.log(response.data);
 
                     optionsHTML_Arr.push(
                         `<option value=""></option>`

@@ -262,7 +262,6 @@ class ProductController extends Controller
             session()->push('product.main', $main_imageUrl);
 
             // return $image;
-
             // return $m_image;
 
             foreach ($imageSettings as $imageSetting) {
@@ -274,15 +273,19 @@ class ProductController extends Controller
                 // $height = $imageSetting->height;
 
                 // return $extension;
-                $directory = 'assets/frontend/product/gallery-images/';
+                $directory = 'assets/frontend/product/gallery-images/' . $typeName . '/';
                 $imageName = rand() . '.' . $extention;
                 $imageUrl = $directory . $imageName;
                 session()->push('product' . $typeName, $imageUrl);
                 $img = Image::make($image);
                 $img->resize($imageSetting->width, $imageSetting->height, function ($c) {
-                    $c->aspectRatio();
+                    // $c->aspectRatio();
+
                     $c->upsize();
                 });
+                if (!file_exists($directory)) {
+                    mkdir($directory, 0777, true); // Create the directory recursively with full permissions
+                }
                 //resize working
                 // $image=Image::make($image)->driver('imagick');
                 $img->save($directory . $imageName);
@@ -482,7 +485,15 @@ class ProductController extends Controller
     }
 
 
-
+    public function getMake(Request $request)
+    {
+        // return $request;
+        $year = $request->input('year_id');
+        // $models = VehicleYear::where('make_id', $makeId)->distinct()->pluck('model_id');
+        $make = VehicleYear::where('year', $year)->distinct()->pluck('make_id');
+        $makes = VehicleMake::find($make);
+        return $makes;
+    }
 
     public function getModel(Request $request)
     {
@@ -513,19 +524,16 @@ class ProductController extends Controller
         $home_default = ImageSetting::where('type_name', 'home_default')->where('status', 1)->first();
         //resize working
         // $image=Image::make($image)->driver('imagick');
-
         $image = $request->file('featured_image');
         $imageName = rand() . '.' . $image->getClientOriginalExtension();
         $directory = 'assets/frontend/product/featured_image/';
         $imageUrl = $directory . $imageName;
         $img = Image::make($image);
-
         $img->resize($home_default->width, $home_default->height, function ($c) {
-            $c->aspectRatio();
-            $c->upsize();
+            // $c->aspectRatio();
+            // $c->upsize();
         });
         $img->save($directory . $imageName);
-
         // $image->move($directory, $imageName);
         return $imageUrl;
     }

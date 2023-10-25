@@ -45,7 +45,6 @@ class CategoryProductController extends Controller
         // return $product_category->id;
         //taking last viwed category to use in discount.
         session()->put('product_category', $product_category->id);
-
         $orderby = null;
         $orderby = $request->orderby;
         // return $request;
@@ -63,7 +62,6 @@ class CategoryProductController extends Controller
         $products = Product::where('parent_category', $product_category->id);
 
         if (!empty($orderby)) {
-
             if ($orderby === "date") {
                 $products->orderBy('created_at', 'desc');
             } elseif ($orderby === "price") {

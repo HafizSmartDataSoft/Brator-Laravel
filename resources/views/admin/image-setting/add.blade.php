@@ -137,9 +137,9 @@
                                         <option value="category">
                                             Categories
                                         </option>
-                                        <option value="brand">
+                                        {{-- <option value="brand">
                                            Brands
-                                        </option>
+                                        </option> --}}
 
                                     </select>
                                 </div>
@@ -177,7 +177,6 @@
 
                                 </select>
                             </div>
-
                             <div>
                                 <label class="label mb-1 font-medium" for="vendor"> Excluded Products </label>
                                 <select name="excluded[]" multiple="" class="tom-select" id="status">
@@ -187,8 +186,6 @@
                                     @endforeach
                                 </select>
                             </div> --}}
-
-
                             <div class="flex flex-col gap-4">
                                 <div>
                                     <label class="label label-required mb-1 font-medium" for="status"> Status
@@ -203,7 +200,6 @@
                                     </select>
                                 </div>
                             </div>
-
                         </div>
                     </section>
                     <div class="mt-6 flex w-full items-center justify-end">
@@ -215,7 +211,6 @@
             <!-- Add Image Setting Page Ends -->
         </main>
         <!-- Main Content Ends -->
-
         <!-- Footer Starts -->
         <footer class="footer">
             <p class="text-sm">

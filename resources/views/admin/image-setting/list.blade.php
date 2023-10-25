@@ -100,7 +100,7 @@
                                 <th class="w-[10%] uppercase">height</th>
                                 <th class="w-[10%] uppercase">Product</th>
                                 <th class="w-[10%] uppercase">Categories</th>
-                                <th class="w-[10%] uppercase">Brands</th>
+                                {{-- <th class="w-[10%] uppercase">Brands</th> --}}
                                 <th class="w-[10%] uppercase">Status</th>
                                 <th class="w-[5%] !text-right uppercase">Actions</th>
                             </tr>
@@ -160,7 +160,7 @@
                                     @php
                                         $count = 0;
                                     @endphp
-                                    <td>
+                                    {{-- <td>
 
                                         @foreach ($work_ons as $work_on)
                                             @if ($work_on->work_on == 'brand' && $image_setting->id == $work_on->type_id)
@@ -178,7 +178,7 @@
                                                 &#10006
                                             </div>
                                         @endif
-                                    </td>
+                                    </td> --}}
                                     @php
                                         $count = 0;
                                     @endphp
@@ -275,7 +275,7 @@
                 </div>
                 <!-- Image Setting Pagination Ends -->
                 <!-- Image Regenerate thumbnails Starts -->
-                <form class="" action="{{ route('product-tag.store') }}" method="POST"
+                <form class="" action="{{ route('regenerate-thumbnails') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="p-4 mb-4 text-sm text-red-500 rounded-lg  dark:bg-gray-800 dark:text-red-400"
@@ -302,11 +302,11 @@
                                         <div>
                                             <label class="label  mb-1 font-medium" for="status"> Select an image
                                             </label>
-                                            <select name="image_setting_type" id="makeSelect" class="select">
+                                            <select name="worksOn" id="worksOn" class="select">
                                                 <option value="all">All</option>
                                                 <option value="product">Product</option>
                                                 <option value="category">Categories</option>
-                                                <option value="brand">Brands</option>
+                                                {{-- <option value="brand">Brands</option> --}}
                                             </select>
                                         </div>
                                     </div>
@@ -314,7 +314,7 @@
                                         <label class="label label-required mb-1 font-medium" for="status"> Select a
                                             format
                                         </label>
-                                        <select name="status" class="select" id="modelSelect">
+                                        <select name="setting_type" class="select" id="imageSetting">
                                             <option value=""></option>
 
                                         </select>
@@ -355,42 +355,41 @@
 @section('js')
     <script>
         // Get a reference to the select element
-        const makeSelect = document.getElementById('makeSelect');
+        const worksOn = document.getElementById('worksOn');
         // let optionsHTMLStr = ""
-        var selectedMake;
+        var worksOnValue;
         // Add an event listener to listen for the "change" event
-        makeSelect.addEventListener('change', function() {
+        worksOn.addEventListener('change', function() {
             // Get the selected value
-            selectedMake = makeSelect.value;
+            worksOnValue = worksOn.value;
             // Do something with the selected value, for example, log it to the console
             const dataToSend = {
-                make_id: selectedMake,
+                make_id: worksOnValue,
             };
-
-            var select = document.getElementById('modelSelect');
+            var select = document.getElementById('imageSetting');
             axios.post('/get-image-settings', dataToSend)
                 .then(function(response) {
-                    console.log(response);
-                    var modelSelect = document.getElementById('modelSelect'),
+                    // console.log(response);
+                    var imageSetting = document.getElementById('imageSetting'),
                         optionsHTML_Arr = [],
                         j = response.data.length;
-                    console.log(response.data);
-
+                    // console.log(response.data);
                     optionsHTML_Arr.push(
-                        `<option value=""></option>`
+                        `<option value="all">All</option>`
                     );
                     for (var i = 0; i < j; i++) {
                         // console.log(response.data[i].id);
                         // console.log(response.data[i].name);
-
-                        // data = response.data[i];
+                        data = response.data[i].status;
                         // console.log(data);
+                        if (response.data[i].status == 1) {
+                            optionsHTML_Arr.push(
+                                `<option value="${response.data[i].id}"> ${response.data[i].type_name}</option>`
+                            );
+                        }
 
-                        optionsHTML_Arr.push(
-                            `<option value="${response.data[i].id}"> ${response.data[i].type_name}</option>`
-                        );
                     }
-                    modelSelect.innerHTML = optionsHTML_Arr.join('');
+                    imageSetting.innerHTML = optionsHTML_Arr.join('');
                     // console.log(optionsHTML_Arr);
                     // console.log(response.data);
                 })

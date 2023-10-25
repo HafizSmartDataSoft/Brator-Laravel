@@ -1264,24 +1264,15 @@
                         'X-CSRF-TOKEN': "{{ csrf_token() }}" // Include the CSRF token in the headers
                     },
                     success: function(data) {
-
                         // window.location.href = "{{ route('product-category.show', ['product_category' => $category->slug]) }}";
                         window.location.href =
                             "{{ route('product-category.show', ['product_category' => $category->slug, 'sort_by' => '2']) }}";
-
-
-
                         // console.log(data.links);
                         // const productHTML = `${data.links('pagination::tailwind') }`;
-
                         // $('#product-link').html(productHTML);
                         // updateProductListAndPagination(data);
-
                         // const updatedProductList = generateProductListHTML(data);
                         // $('#product-list').html(updatedProductList);
-
-
-
                         // Update the product list or grid with sorted data
                         // You can replace the content of the product grid or list with the sorted data here.
                     },

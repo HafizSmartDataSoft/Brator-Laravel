@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequestValidate;
+use App\Models\ImageSetting;
+use Intervention\Image\Facades\Image;
+
 
 class CategoryController extends Controller
 {
@@ -101,18 +104,37 @@ class CategoryController extends Controller
 
         return redirect('admin/category-list');
     }
-
-
-
     public function saveImage($request)
     {
+        $category_default = ImageSetting::where('type_name', 'category_default')->where('status', 1)->first();
         $image = $request->file('image');
         $imageName = rand() . '.' . $image->getClientOriginalExtension();
         $directory = 'assets/frontend/category/category-image/';
         $imageUrl = $directory . $imageName;
-        $image->move($directory, $imageName);
+        $img = Image::make($image);
+        $img->resize($category_default->width, $category_default->height, function ($c) {
+            // $c->aspectRatio();
+            // $c->upsize();
+        });
+        if (!file_exists($directory)) {
+            mkdir($directory, 0777, true);
+        }
+        $img->save($directory . $imageName);
+        // $image->move($directory, $imageName);
         return $imageUrl;
+
     }
+
+    // public function saveImage($request)
+    // {
+    //     $image = $request->file('image');
+    //     $imageName = rand() . '.' . $image->getClientOriginalExtension();
+    //     $directory = 'assets/frontend/category/category-image/';
+    //     $imageUrl = $directory . $imageName;
+    //     $image->move($directory, $imageName);
+    //     return $imageUrl;
+
+    // }
 
     public function slugify($text)
     {

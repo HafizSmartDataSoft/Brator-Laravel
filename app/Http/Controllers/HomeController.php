@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductSubCategory;
+use App\Models\VehicleYear;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // return $in;
+        // return $years = VehicleYear::all()->pluck('year')->unique();
         return view(
             'frontend.home.home',
             [
@@ -22,6 +23,8 @@ class HomeController extends Controller
                 'categories' => Category::all(),
                 'products' => Product::all(),
                 'sub_categories' => ProductSubCategory::all(),
+                'years' => VehicleYear::all()->pluck('year')->unique(),
+
             ]
         );
     }

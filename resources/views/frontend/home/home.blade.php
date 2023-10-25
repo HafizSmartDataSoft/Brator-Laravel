@@ -21,44 +21,32 @@
                             <h2>Search by Vehicle</h2>
                             <p>Filter your results by entering your Vehicle to ensure you find the parts that fit.</p>
                         </div>
-                        <div class="brator-parts-search-box-form">
-                            <select class="select-year-parts brator-select-active">
-                                <option value="anything">Year</option>
-                                <option value="anything">2000</option>
-                                <option value="anything">2001</option>
-                                <option value="anything">2002</option>
-                                <option value="anything">2003</option>
-                            </select>
-                            <select class="select-make-parts brator-select-active" disabled="disabled">
-                                <option value="anything">Make</option>
-                                <option value="anything">Make 01</option>
-                                <option value="anything">Make 02</option>
-                                <option value="anything">Make 03</option>
-                                <option value="anything">Make 04</option>
-                            </select>
-                            <select class="select-model-parts brator-select-active" disabled="disabled">
-                                <option value="anything">Model</option>
-                                <option value="anything">Model 01</option>
-                                <option value="anything">Model 02</option>
-                                <option value="anything">Model 03</option>
-                                <option value="anything">Model 04</option>
-                            </select>
-                            <select class="select-sub-model-parts brator-select-active" disabled="disabled">
-                                <option value="anything">Sub Model</option>
-                                <option value="anything">Sub Model 01</option>
-                                <option value="anything">Sub Model 02</option>
-                                <option value="anything">Sub Model 03</option>
-                                <option value="anything">Sub Model 04</option>
-                            </select>
-                            <select class="select-engine-parts brator-select-active" disabled="disabled">
-                                <option value="anything">Engine</option>
-                                <option value="anything">Engine 01</option>
-                                <option value="anything">Engine 02</option>
-                                <option value="anything">Engine 03</option>
-                                <option value="anything">Engine 04</option>
-                            </select>
-                            <button type="submit">Search</button>
-                        </div>
+                        <form action="{{ route('search') }}" method="GET" enctype="multipart/form-data">
+                            @csrf
+                            <div class="brator-parts-search-box-form">
+                                <select name="year" class="select-year-parts brator-select-active" id="selecteYear">
+                                    <option value="">Year</option>
+                                    @foreach ($years as $year)
+                                        <option value="{{ $year }}">{{ $year}}</option>
+                                    @endforeach
+                                </select>
+                                <select name="make"  class="select-make-parts brator-select-active" id="makeSelect" disabled="disabled">
+                                    <option value="anything">Make</option>
+
+                                </select>
+                                <select name="model" class="select-model-parts brator-select-active" id="modelSelect"
+                                    disabled="disabled">
+                                    <option value="anything">Model</option>
+                                </select>
+                                {{-- <select class="select-sub-model-parts brator-select-active" disabled="disabled">
+                                    <option value="anything">Sub Model</option>
+                                </select> --}}
+                                {{-- <select class="select-engine-parts brator-select-active" disabled="disabled">
+                                    <option value="anything">Engine</option>
+                                </select> --}}
+                                <button type="submit">Search</button>
+                            </div>
+                        </form>
                     </div>
 
                 </div>
@@ -86,7 +74,7 @@
                             $i = 0;
                         @endphp
                         @foreach ($categories as $category)
-                            @if ($category->parent_id == null && $i < 14 )
+                            @if ($category->parent_id == null && $i < 14)
                                 <div class="brator-categories-single">
                                     <div class="brator-categories-single-img"><a {{-- href="{{ route('product-category.show', ['product_category' => $category->id]) }}"  --}}
                                             href="{{ route('product-category.show', ['product_category' => $category->slug]) }}">
@@ -122,12 +110,12 @@
                 <div id="myDiv" style="display: none;" class="col-md-12">
                     @php
                         $i = 0;
-                        $j =0;
+                        $j = 0;
                     @endphp
                     <div class="brator-categories-list">
                         @foreach ($categories as $category)
                             @if ($category->parent_id == null)
-                                @if ($i >= 14 && $j<28)
+                                @if ($i >= 14 && $j < 28)
                                     <div class="brator-categories-single">
                                         <div class="brator-categories-single-img"><a {{-- href="{{ route('product-category.show', ['product_category' => $category->id]) }}"  --}}
                                                 href="{{ route('product-category.show', ['product_category' => $category->slug]) }}">
@@ -153,8 +141,8 @@
 
                                     </div>
                                     @php
-                                    $j++;
-                                @endphp
+                                        $j++;
+                                    @endphp
                                 @endif
                                 @php
                                     $i++;
@@ -984,40 +972,40 @@
                                             <div class="brator-review">
                                                 <svg class="active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
                                                 </svg>
                                                 <svg class="active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
                                                 </svg>
                                                 <svg class="active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
                                                 </svg>
                                                 <svg class="active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
                                                 </svg>
                                                 <svg class="d-active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
@@ -1048,8 +1036,7 @@
                                                     </path>
                                                 </svg></a></div>
                                     </div>
-                                    <div class="brator-product-single-item-img"><a href="#_"><img
-                                                class="lazyload"
+                                    <div class="brator-product-single-item-img"><a href="#_"><img class="lazyload"
                                                 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                                 data-src="{{ asset('assets/frontend') }}/images/shop/product-02.jpg"
                                                 alt="alt" /></a></div>
@@ -1063,40 +1050,40 @@
                                             <div class="brator-review">
                                                 <svg class="active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
                                                 </svg>
                                                 <svg class="active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
                                                 </svg>
                                                 <svg class="active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
                                                 </svg>
                                                 <svg class="active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
                                                 </svg>
                                                 <svg class="d-active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
@@ -1128,14 +1115,13 @@
                                                 </svg></a></div>
                                     </div>
 
-                                    <div class="brator-product-single-item-img"><a href="#_"><img
-                                                class="lazyload"
+                                    <div class="brator-product-single-item-img"><a href="#_"><img class="lazyload"
                                                 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                                 data-src="{{ asset('assets/frontend') }}/images/shop/product-03.jpg"
                                                 alt="alt" /></a></div>
                                     <div class="brator-product-single-item-mini">
-                                        <div class="brator-product-single-item-cat"><a
-                                                href="product-layout-01.html">Brake oil</a></div>
+                                        <div class="brator-product-single-item-cat"><a href="product-layout-01.html">Brake
+                                                oil</a></div>
                                         <div class="brator-product-single-item-title">
                                             <h5><a href="#_"> Simple Leather Steering Wheel New</a></h5>
                                         </div>
@@ -1143,40 +1129,40 @@
                                             <div class="brator-review">
                                                 <svg class="active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
                                                 </svg>
                                                 <svg class="active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
                                                 </svg>
                                                 <svg class="active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
                                                 </svg>
                                                 <svg class="active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
                                                 </svg>
                                                 <svg class="d-active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
@@ -1221,40 +1207,40 @@
                                             <div class="brator-review">
                                                 <svg class="active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
                                                 </svg>
                                                 <svg class="active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
                                                 </svg>
                                                 <svg class="active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
                                                 </svg>
                                                 <svg class="active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
                                                 </svg>
                                                 <svg class="d-active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
@@ -1301,40 +1287,40 @@
                                             <div class="brator-review">
                                                 <svg class="active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
                                                 </svg>
                                                 <svg class="active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
                                                 </svg>
                                                 <svg class="active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
                                                 </svg>
                                                 <svg class="active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
                                                 </svg>
                                                 <svg class="d-active" fill="#000000" width="52" height="52"
                                                     version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                    y="0px" viewBox="0 0 64 64">
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 64 64">
                                                     <path
                                                         d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
                                                     </path>
@@ -2338,8 +2324,8 @@
                                     <div class="brator-blog-listing-single-item-info-2"><a class="post-by"
                                             href="#_">
                                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                y="0px" viewBox="0 0 64 64">
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                viewBox="0 0 64 64">
                                                 <path class="st0" d="M-9.5,69.7"></path>
                                                 <g>
                                                     <path
@@ -2382,8 +2368,8 @@
                                     <div class="brator-blog-listing-single-item-info-2"><a class="post-by"
                                             href="#_">
                                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                y="0px" viewBox="0 0 64 64">
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                viewBox="0 0 64 64">
                                                 <path class="st0" d="M-9.5,69.7"></path>
                                                 <g>
                                                     <path
@@ -2424,8 +2410,8 @@
                                     <div class="brator-blog-listing-single-item-info-2"><a class="post-by"
                                             href="#_">
                                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                                                y="0px" viewBox="0 0 64 64">
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                viewBox="0 0 64 64">
                                                 <path class="st0" d="M-9.5,69.7"></path>
                                                 <g>
                                                     <path
@@ -2597,5 +2583,95 @@
             });
         });
         // $('#category').show();
+    </script>
+
+    <script>
+        $('#selecteYear').on('change', function() {
+            selectedYear = selecteYear.value;
+            // console.log(selectedYear);
+            var select = document.getElementById('makeSelect');
+            if (select.hasAttribute("disabled")) {
+                select.removeAttribute("disabled");
+            }
+            $.ajax({
+                url: "{{ route('get-make-data') }}",
+                method: 'POST',
+                data: {
+                    year_id: selectedYear
+                },
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                },
+                success: function(data) {
+                    // console.log(data.length);
+
+                    var makeSelect = document.getElementById('makeSelect'),
+                        optionsHTML_Arr = [],
+
+                        j = data.length;
+                    // console.log(data);
+
+                    optionsHTML_Arr.push(
+                        `<option value="">Make</option>`
+                    );
+                    for (var i = 0; i < j; i++) {
+                        // console.log(data[i].id);
+                        // console.log(data[i].name);
+                        // data = data[i];
+                        // console.log(data);
+                        optionsHTML_Arr.push(
+                            `<option value="${data[i].id}"> ${data[i].name}</option>`
+                        );
+                    }
+                    makeSelect.innerHTML = optionsHTML_Arr.join('');
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+    </script>
+    <script>
+        $('#makeSelect').on('change', function() {
+            selectedYear = makeSelect.value;
+            // console.log(selectedYear);
+            var select = document.getElementById('modelSelect');
+            if (select.hasAttribute("disabled")) {
+                select.removeAttribute("disabled");
+            }
+            $.ajax({
+                url: "{{ route('get-model-data') }}",
+                method: 'POST',
+                data: {
+                    make_id: selectedYear
+                },
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                },
+                success: function(data) {
+                    // console.log(data);
+                    var modelSelect = document.getElementById('modelSelect'),
+                        optionsHTML_Arr = [],
+                        j = data.length;
+                    // console.log(data);
+                    optionsHTML_Arr.push(
+                        `<option value="">Model</option>`
+                    );
+                    for (var i = 0; i < j; i++) {
+                        // console.log(data[i].id);
+                        // console.log(data[i].name);
+                        // data = data[i];
+                        // console.log(data);
+                        optionsHTML_Arr.push(
+                            `<option value="${data[i].id}"> ${data[i].name}</option>`
+                        );
+                    }
+                    modelSelect.innerHTML = optionsHTML_Arr.join('');
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
     </script>
 @endsection

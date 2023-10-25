@@ -17,6 +17,7 @@ use App\Http\Controllers\MakeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductViewController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\VehicleMakeController;
 use App\Http\Controllers\VehicleModelController;
@@ -110,8 +111,13 @@ Route::post('product/checkout', [ProductViewController::class, 'checkout'])->nam
 
 Route::post('/get-year-data', [ProductController::class, 'getYear'])->name('get-year-data');
 Route::post('/get-model-data', [ProductController::class, 'getModel'])->name('get-model-data');
+Route::post('/get-make-data', [ProductController::class, 'getMake'])->name('get-make-data');
 Route::post('/get-image-settings', [ImageSettingController::class, 'getImageSetting'])->name('get-image-settings');
+Route::post('/regenerate-thumbnails', [ImageSettingController::class, 'regenerateThumbnails'])->name('regenerate-thumbnails');
 Route::get('/products/sort', [ProductController::class, 'sort'])->name('products.sort');
+
+
+Route::get('/search', [ShopController::class, 'search'])->name('search');
 
 
 // Route::get('/dashboard', function () {

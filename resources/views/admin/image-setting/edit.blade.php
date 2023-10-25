@@ -99,10 +99,10 @@
                                                 <option value="category" selected>
                                                     Categories
                                                 </option>
-                                            @elseif ($workOn->work_on == 'brand')
+                                            {{-- @elseif ($workOn->work_on == 'brand')
                                                 <option value="brand" selected>
                                                     Brands
-                                                </option>
+                                                </option> --}}
                                             @endif
                                         @endforeach
                                         {{-- @foreach ($workOns as $workOn)
@@ -133,9 +133,9 @@
                                         <option value="category">
                                             Categories
                                         </option>
-                                        <option value="brand">
+                                        {{-- <option value="brand">
                                             Brands
-                                        </option>
+                                        </option> --}}
 
                                     </select>
                                 </div>
