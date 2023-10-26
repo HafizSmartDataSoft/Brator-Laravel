@@ -16,4 +16,8 @@ class VehicleModel extends Model
         "make_id",
         "status",
     ];
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'model_id', 'id');
+    }
 }

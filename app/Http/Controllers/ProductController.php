@@ -613,4 +613,12 @@ class ProductController extends Controller
         }
         return response()->json($products);
     }
+
+    public function search(Request $request)
+    {
+        $searchQuery = $request->input('q');
+        $products = Product::where('name', 'LIKE', '%' . $searchQuery . '%')->get();
+
+        return response()->json($products);
+    }
 }

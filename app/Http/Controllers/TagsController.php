@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\TagModel;
 use Illuminate\Http\Request;
 
@@ -44,7 +46,6 @@ class TagsController extends Controller
             ]);
 
             session()->flash('success', 'Tag Successfully Added !');
-
         }
         return back();
     }
@@ -52,9 +53,37 @@ class TagsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TagModel $productTag)
+    public function show(Request $request, TagModel $productTag)
     {
-        //
+        $orderby = null;
+        $orderby = $request->orderby;
+
+        $tagProducts = $productTag->products()->where('status',"2");
+        // return $tagProducts;
+        if (!empty($orderby)) {
+            if ($orderby === "date") {
+                $tagProducts->orderBy('created_at', 'desc');
+            } elseif ($orderby === "price") {
+                // return $orderby;
+                $tagProducts->orderBy('sale_price', 'asc');
+            } elseif ($orderby === "price-desc") {
+                $tagProducts->orderBy('sale_price', 'desc');
+            }
+        }
+        $tagProducts = $tagProducts->paginate(10);
+        $tagProducts->appends(['orderby' => $orderby]);
+        $recentProducts = session()->get('products.recently_viewed');
+        $categories = Category::with('children')->whereNull('parent_id')->get();
+        return view(  'frontend.shop.show-products',
+        [
+            'recentlyViewed' => Product::find($recentProducts),
+            'categories' => $categories,
+            'allProducts' => Product::all(),
+            'orderby' => $orderby,
+            'products' => $tagProducts,
+        ]
+        );
+        // return $productTag->products;
     }
 
     /**
@@ -87,7 +116,6 @@ class TagsController extends Controller
 
             ]);
             session()->flash('update_success', 'Tag Model Successfully Updated !');
-
         }
 
         return redirect('product-tag');

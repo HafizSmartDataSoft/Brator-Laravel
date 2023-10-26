@@ -226,7 +226,6 @@ class DiscountController extends Controller
         $items = $request->input('items');
         $discountProduct = Product::find($discountProduct);
         $discountAvaiable = Discount::where('coupon_code', $discountCode)->where('status', 1)->first();
-
         if (session('customerId')) {
             $customerId = session('customerId');
             //coupon can use once.

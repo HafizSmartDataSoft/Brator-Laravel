@@ -66,7 +66,7 @@
                                                     <th class="w-[40%] uppercase">Sl No</th>
                                                     <th class="w-[40%] uppercase">Order</th>
                                                     <th class="w-[40%] uppercase">Order Date</th>
-                                                    <th class="w-[10%] uppercase">Coupon</th>
+                                                    {{-- <th class="w-[10%] uppercase">Coupon</th> --}}
                                                     <th class="w-[10%] uppercase">Status</th>
                                                 </tr>
                                             </thead>
@@ -106,7 +106,7 @@
                                                         </td>
                                                         <td> {{ $order->created_at->format('d M Y ') }}</td>
 
-                                                        <td> {{ $order->coupons }}</td>
+                                                        {{-- <td> {{ $order->coupons }}</td> --}}
 
                                                         <td>
                                                             <div class="badge badge-soft-success">

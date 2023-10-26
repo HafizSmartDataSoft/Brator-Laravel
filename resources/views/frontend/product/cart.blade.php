@@ -55,15 +55,16 @@
                             <div class="brator-cart-list-items">
                                 <div class="brator-cart-list-items-title">
                                     <div class="img-cart"><a href="#_"><img class="lazyload"
-                                                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  data-src="{{ asset($product->featured_image) }}"
-                                                alt="alt" /></a></div>
+                                                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                                data-src="{{ asset($product->featured_image) }}" alt="alt" /></a></div>
                                     <div class="prodct-info">
                                         <h5><a href="#_">{{ $product->name }}</a></h5>
                                         {{-- <p>19” DIAMETER (19” x 8.5”), White/Sliver</p> --}}
                                     </div>
                                 </div>
                                 <div class="brator-cart-list-items-price">
-                                    <p><sup>${{ $product->sale_price }}</sup><b class="pub">${{ $product->base_price }}</b>
+                                    <p><sup>${{ $product->sale_price }}</sup><b
+                                            class="pub">${{ $product->base_price }}</b>
                                     </p>
                                 </div>
                                 <div class="brator-cart-list-items-qty-area">
@@ -131,11 +132,21 @@
                                     <div class="brator-product-single-item-area splide__slide design-two">
                                         <div class="brator-product-single-item-info info-content-left">
                                             <div class="brator-product-single-item-info-left">
-                                                <div class="yollow-batch">New</div>
+                                                @php
+                                                    $updated_at = $product->updated_at;
+                                                    $currentDate = date('Y-m-d');
+                                                    $dateDifference = strtotime($updated_at) - strtotime($currentDate);
+                                                    $daysDifference = round($dateDifference / 86400); // 86400 seconds in a day
+                                                @endphp
+
+                                                @if ($daysDifference >= 0 && $daysDifference <= 7)
+                                                    <div class="yollow-batch">New</div>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="brator-product-single-item-img"><a href="#_"><img class="lazyload"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  data-src="{{ asset('assets/frontend') }}/images/shop/product-01.jpg"
+                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                                    data-src="{{ asset('assets/frontend') }}/images/shop/product-01.jpg"
                                                     alt="alt" /></a></div>
                                         <div class="brator-product-single-item-mini">
                                             <div class="brator-product-single-item-cat"><a
@@ -206,7 +217,8 @@
                                         </div>
                                         <div class="brator-product-single-item-img"><a href="#_"><img
                                                     class="lazyload"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  data-src="{{ asset('assets/frontend') }}/images/shop/product-02.jpg"
+                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                                    data-src="{{ asset('assets/frontend') }}/images/shop/product-02.jpg"
                                                     alt="alt" /></a></div>
                                         <div class="brator-product-single-item-mini">
                                             <div class="brator-product-single-item-cat"><a
@@ -276,7 +288,8 @@
                                         </div>
                                         <div class="brator-product-single-item-img"><a href="#_"><img
                                                     class="lazyload"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  data-src="{{ asset('assets/frontend') }}/images/shop/product-03.jpg"
+                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                                    data-src="{{ asset('assets/frontend') }}/images/shop/product-03.jpg"
                                                     alt="alt" /></a></div>
                                         <div class="brator-product-single-item-mini">
                                             <div class="brator-product-single-item-cat"><a
@@ -346,7 +359,8 @@
                                         </div>
                                         <div class="brator-product-single-item-img"><a href="#_"><img
                                                     class="lazyload"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  data-src="{{ asset('assets/frontend') }}/images/shop/product-04.jpg"
+                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                                    data-src="{{ asset('assets/frontend') }}/images/shop/product-04.jpg"
                                                     alt="alt" /></a></div>
                                         <div class="brator-product-single-item-mini">
                                             <div class="brator-product-single-item-cat"><a
@@ -420,9 +434,10 @@
                             <p>Download and experience our app today</p>
                         </div>
                         <div class="brator-app-btn"><a href="#_"><img class="lazyload"
-                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  data-src="{{ asset('assets/frontend') }}/images/apple.png"
-                                    alt="alt" /></a><a href="#_"><img
-                                    src="{{ asset('assets/frontend') }}/images/google.png" alt="alt" /></a></div>
+                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                    data-src="{{ asset('assets/frontend') }}/images/apple.png" alt="alt" /></a><a
+                                href="#_"><img src="{{ asset('assets/frontend') }}/images/google.png"
+                                    alt="alt" /></a></div>
                     </div>
                     <!-- Footer top one end-->
                 </div>
@@ -472,7 +487,8 @@
                                 <p>Accept Payment Methods</p>
                                 <div class="list-img-pay">
                                     <a href="#_"><img class="lazyload"
-                                            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  data-src="{{ asset('assets/frontend') }}/images/footer/paypal.png"
+                                            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                            data-src="{{ asset('assets/frontend') }}/images/footer/paypal.png"
                                             alt="logo" /></a><a href="#_"><img
                                             src="{{ asset('assets/frontend') }}/images/footer/master.png"
                                             alt="logo" /></a><a href="#_"><img
@@ -507,11 +523,10 @@
                     const base_price = currentValue * product.base_price;
                     const discount = currentValue * (product.sale_price - product.base_price);
                     const taxAmount = subtotal * (product.tax / 100);
-                    if (product.tax!=null) {
+                    if (product.tax != null) {
                         document.getElementById("total").innerHTML = `$${subtotal + taxAmount}`;
-                    }
-                    else{
-                        document.getElementById("total").innerHTML = `$${subtotal}` ;
+                    } else {
+                        document.getElementById("total").innerHTML = `$${subtotal}`;
                     }
                     document.getElementById("subtotal").innerHTML = `$${subtotal}`;
                     // document.getElementById("base_price").innerHTML = base_price;
@@ -530,13 +545,12 @@
                     // const base_price = currentValue * product.base_price;
                     // const discount = currentValue * (product.sale_price - product.base_price);
                     const taxAmount = subtotal * (product.tax / 100);
-                    if (product.tax!=null) {
+                    if (product.tax != null) {
                         document.getElementById("total").innerHTML = `$${subtotal + taxAmount}`;
+                    } else {
+                        document.getElementById("total").innerHTML = `$${subtotal}`;
                     }
-                    else{
-                        document.getElementById("total").innerHTML =`$${subtotal}`  ;
-                    }
-                    document.getElementById("subtotal").innerHTML =  `$${subtotal}`;
+                    document.getElementById("subtotal").innerHTML = `$${subtotal}`;
                     // document.getElementById("base_price").innerHTML = base_price;
                     // document.getElementById("discount").innerHTML = discount;
                     document.getElementById("items").innerHTML = `${currentValue} items`;

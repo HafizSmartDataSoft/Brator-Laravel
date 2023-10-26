@@ -42,6 +42,7 @@ class CategoryProductController extends Controller
      */
     public function show(Request $request, Category $product_category)
     {
+
         // return $product_category->id;
         //taking last viwed category to use in discount.
         session()->put('product_category', $product_category->id);
@@ -54,11 +55,6 @@ class CategoryProductController extends Controller
         // $dataSort = session()->get('data-sort');
         // $dataSort = $request->query('sort_by');
         // return $dataSort;
-
-
-
-
-
         $products = Product::where('parent_category', $product_category->id);
 
         if (!empty($orderby)) {

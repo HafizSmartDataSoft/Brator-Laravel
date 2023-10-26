@@ -32,6 +32,12 @@ class Product extends Model
         // "gallary_images",
     ];
 
+    public function make()
+    {
+        return $this->belongsTo(VehicleMake::class, 'make_id', 'id');
+    }
+
+
     public function subCategories()
     {
         return $this->hasMany(ProductSubCategory::class, "product_id", "id");

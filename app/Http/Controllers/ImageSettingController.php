@@ -115,10 +115,8 @@ class ImageSettingController extends Controller
     {
         // return $request;
         if ($request->worksOn == 'all') {
-
             //for products
             $productImageSettings = $this->productImageSettings();
-
             //for category
             $categories = Category::all();
             foreach ($categories as $category) {
@@ -183,19 +181,17 @@ class ImageSettingController extends Controller
     }
     public function productImageSettings()
     {
-
         $workOns = TypeWorkOn::where('work_on', 'product')->get();
         $workOns = $workOns->pluck('type_id');
         $imageSettings = ImageSetting::find($workOns)->where('status', 1);
-        $products = Product::all();
+        $products = Product::all(['id', 'featured_image']);
         // return $imageSettings;
-
         foreach ($products as $product) {
             //for featured image
             if ($product->featured_image != null) {
                 $imageUrl = $this->save_featured_image($product->featured_image);
             }
-            $main_images = ProductImage::where('product_id', $product->id)->where('image_type', 'main')->get();
+            $main_images = ProductImage::where('product_id', $product->id)->where('image_type', 'main')->pluck('image');
             if (count($main_images) != 0) {
                 foreach ($imageSettings as $imageSetting) {
                     // return $imageSetting;
@@ -205,8 +201,8 @@ class ImageSettingController extends Controller
                 foreach ($main_images as $main_image) {
                     foreach ($imageSettings as $imageSetting) {
                         $typeName = $imageSetting->type_name;
-                        $extension = pathinfo($main_image->image, PATHINFO_EXTENSION);
-                        $img = Image::make($main_image->image);
+                        $extension = pathinfo($main_image, PATHINFO_EXTENSION);
+                        $img = Image::make($main_image);
                         // return $extension;
                         $directory = 'assets/frontend/product/gallery-images/' . $typeName . '/';
                         $imageName = rand() . '.' . $extension;

@@ -51,7 +51,6 @@ class ProductViewController extends Controller
     {
         // return $product_detail;
         $products = session()->get('products.recently_viewed');
-
         session()->push('products.recently_viewed', $product_detail->id);
 
         // $categories=Category::find($product_detail->parent_category);

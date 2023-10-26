@@ -655,8 +655,16 @@
                                         <div class="brator-product-single-item-area splide__slide design-two">
                                             <div class="brator-product-single-item-info info-content-flex">
                                                 <div class="brator-product-single-item-info-left">
-                                                    <div class="yollow-batch">New</div>
                                                     @php
+                                                    $updated_at = $product->updated_at;
+                                                    $currentDate = date('Y-m-d');
+                                                    $dateDifference = strtotime($updated_at) - strtotime($currentDate);
+                                                    $daysDifference = round($dateDifference / 86400); // 86400 seconds in a day
+                                                @endphp
+
+                                                @if ($daysDifference >= 0 && $daysDifference <= 7)
+                                                    <div class="yollow-batch">New</div>
+                                                @endif                                                     @php
                                                         $discount = round((($product->base_price - $product->sale_price) / $product->base_price) * 100);
                                                         // @dd($discount)
                                                     @endphp
@@ -762,7 +770,7 @@
                                                     @endif
                                                 </div>
                                                 <div class="brator-product-single-item-btn"><a
-                                                        href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}">Add
+                                                        href="{{ route('product.cart', ['product' => $product->sku]) }}">Add
                                                         to cart</a></div>
                                             </div>
                                         </div>
@@ -777,7 +785,6 @@
                     <div class="brator-inline-product-filter-area">
                         <div class="brator-inline-product-filter-left">
                             <div class="brator-filter-show-result">
-                                <p>Total<span> {{ count($products) }} </span>results</p>
                             </div>
                             {{-- <div class="brator-filter-show-items">
                                 <p>Show item</p>
@@ -850,8 +857,16 @@
                                 <div class="brator-product-single-item-area design-two">
                                     <div class="brator-product-single-item-info info-content-flex">
                                         <div class="brator-product-single-item-info-left">
+                                            @php
+                                            $updated_at = $product->updated_at;
+                                            $currentDate = date('Y-m-d');
+                                            $dateDifference = strtotime($updated_at) - strtotime($currentDate);
+                                            $daysDifference = round($dateDifference / 86400); // 86400 seconds in a day
+                                        @endphp
+
+                                        @if ($daysDifference >= 0 && $daysDifference <= 7)
                                             <div class="yollow-batch">New</div>
-                                        </div>
+                                        @endif                                         </div>
                                         <div class="brator-product-single-item-info-right"><a
                                                 href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}">
                                                 <svg class="bi bi-suit-heart-fill" xmlns="http://www.w3.org/2000/svg"
@@ -951,7 +966,7 @@
                                             @endif
                                         </div>
                                         <div class="brator-product-single-item-btn"><a
-                                                href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}">Add
+                                                href="{{ route('product.cart', ['product' => $product->sku]) }}">Add
                                                 to
                                                 cart</a>
                                             <!-- a(href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}") #{cat}-->
@@ -1065,8 +1080,16 @@
                                         <div class="brator-product-single-item-area splide__slide design-two">
                                             <div class="brator-product-single-item-info info-content-flex">
                                                 <div class="brator-product-single-item-info-left">
+                                                    @php
+                                                    $updated_at = $product->updated_at;
+                                                    $currentDate = date('Y-m-d');
+                                                    $dateDifference = strtotime($updated_at) - strtotime($currentDate);
+                                                    $daysDifference = round($dateDifference / 86400); // 86400 seconds in a day
+                                                @endphp
+
+                                                @if ($daysDifference >= 0 && $daysDifference <= 7)
                                                     <div class="yollow-batch">New</div>
-                                                    {{-- @php
+                                                @endif                                                     {{-- @php
                                                         $discount = round((($product->base_price - $product->sale_price) / $product->base_price) * 100);
 
                                                         // @dd($discount)
@@ -1174,7 +1197,7 @@
                                                     @endif
                                                 </div>
                                                 <div class="brator-product-single-item-btn"><a
-                                                        href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}">Add
+                                                        href="{{ route('product.cart', ['product' => $product->sku]) }}">Add
                                                         to cart</a></div>
                                             </div>
                                         </div>

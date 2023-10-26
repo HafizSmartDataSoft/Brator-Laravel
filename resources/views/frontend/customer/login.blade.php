@@ -79,7 +79,16 @@
                                     <div class="brator-contact-form-field">
                                     </div>
                                 </div>
+                                <div class="brator-icon-link-text">
+Do you have a account?To create an account. Click
+                                    <a href="{{ route('registration') }}">
+                                        <div class="click-item-count">
+
+                                        </div><b>Registration</b>
+                                    </a>
+                                </div>
                                 <div class="brator-cart-checkout">
+
                                     <div class="brator-cart-checkout-left">
                                         <div class="brator-cart-checkout-fields">
                                             <button>Submit</button>

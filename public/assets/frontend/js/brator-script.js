@@ -8,7 +8,7 @@
 
 
 
-	 
+
 	document.addEventListener('lazybeforeunveil', function(e){
 		var bg = e.target.getAttribute('data-bg');
 		if(bg){
@@ -20,11 +20,11 @@
 
 	document.addEventListener( 'DOMContentLoaded', function () {
 
-		
+
 		/*
 			gsap start
 		*/
-		
+
 		$('.brator-app-area').each(function(){
 
 			var gsapTimeline = new TimelineMax();
@@ -59,7 +59,7 @@
 				offset: 0,
 				duration: "60%",
 				triggerHook: 'onCenter', /// onEnter // onLeave
-				loglevel: 2	
+				loglevel: 2
 			})
 			.addTo(controller)
 			.setTween(
@@ -96,7 +96,7 @@
 			   $('html, body').animate({
 				   scrollTop: $(target).offset().top
 				 }, 1000);
-		
+
 			});
 		}
 
@@ -208,13 +208,13 @@
             tabProductItem.open(0);
         }
 
-		
+
 		if ($('#tabs-product-img').length) {
 			if(productInfoTab.length > 0 ){
 				var tabProductImgItem = new Tabs({
 					elem: "tabs-product-img",
 					open: 0
-				});	
+				});
 				tabProductImgItem.open(0);
 			}
 		}
@@ -308,11 +308,11 @@
 		menu start
 	*/
 
-	
+
 	var getLogo = $('.brator-header-area .brator-logo').html();
 	var getMenu = $('.brator-header-menu-area .brator-header-menu').html();
-	
-	
+
+
 
 
 	if($('.brator-logo button').length){
@@ -374,7 +374,7 @@
 		$('body').addClass('brator-header-menu-bg');
 		let docHeight = $(document).height() + 'px'
 		$('.close-menu-bg').css("height", docHeight);
-		
+
 	});
 
 	$(".close-menu-bg" ).click(function(){
@@ -415,7 +415,7 @@
 			}
 		});
 	}
-	
+
 	if($('.rest-all-checkbox').length){
 		$('.rest-all-checkbox').on("click", function(){
 			$('.shop-sidebar-content input:checkbox').removeAttr('checked');
@@ -424,7 +424,7 @@
 
 	if($('.sub-cat').length){
 		$('.sub-cat').on("click", function(){
-			
+
 			if($(this).hasClass('current')){
 				$(this).removeClass('current');
 			}else{
@@ -480,12 +480,12 @@
 	*/
 
 
-		
+
 	let priceMin = $(".brator-rang-item-input-single input[name='min']").attr('value');
 	if(priceMin != ''){
 		$(".brator-rang-item-input-single input[name='min']").addClass('current')
 	}
-		
+
 	let priceMax = $(".brator-rang-item-input-single input[name='max']").attr('value');
 	if(priceMax != ''){
 		$(".brator-rang-item-input-single input[name='max']").addClass('current')
@@ -530,24 +530,24 @@
 				nextYear = yyyy + 1,
 				dayMonth = "01/01/",
 				birthday = dayMonth + yyyy;
-			
+
 			today = mm + "/" + dd + "/" + yyyy;
 			if (today > birthday) {
 			birthday = dayMonth + nextYear;
 			}
 			//end
-			
+
 			const countDown = new Date(birthday).getTime(),
-				x = setInterval(function() {    
-		
+				x = setInterval(function() {
+
 				const now = new Date().getTime(),
 						distance = countDown - now;
-		
+
 				document.getElementById("days").innerText = Math.floor(distance / (day)),
 					document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
 					document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
 					document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
-		
+
 				//do something later when date is reached
 				if (distance < 0) {
 					document.getElementById("headline").innerText = "It's my birthday!";
@@ -594,4 +594,4 @@
 
 
 
-})(window.jQuery);	
+})(window.jQuery);

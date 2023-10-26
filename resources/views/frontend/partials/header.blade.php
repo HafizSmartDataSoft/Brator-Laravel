@@ -101,8 +101,9 @@
                                     </g>
                                 </svg>
                             </div>
-                            <input class="search-field" type="search" placeholder="Search by Part Name ..."
+                            <input class="search-field" id="productSearch" type="search" placeholder="Search by Part Name ..."
                                 name="s" required="required" />
+
                             <button type="submit">
                                 <svg fill="#000000" width="52" height="52" version="1.1"
                                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -112,9 +113,13 @@
                                     </path>
                                 </svg>
                             </button>
+
                         </form>
                     </div>
+                    <div id="searchResults"></div>
                 </div>
+
+
                 <div class="col-xl-4">
                     <div class="brator-info-right">
                         <div class="header-support-info">
@@ -146,7 +151,7 @@
                                     </svg><span>2</span>
                                 </div>
                             </a></div>
-                        <div class="brator-cart-link"><a href="#_">
+                        {{-- <div class="brator-cart-link"><a href="#_">
                                 <div class="brator-cart-icon click-item-count">
                                     <svg fill="#000000" width="52" height="52" version="1.1"
                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -273,7 +278,7 @@
                                             href="#_">Checkout</a></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         @if (session('customerId'))
                             <div class="brator-icon-link-text">
                                 <a href="{{ route('customer/logout') }}">
@@ -320,13 +325,13 @@
                                     </div><b>Login</b>
                                 </a>
                             </div>
-                            <div class="brator-icon-link-text">
+                            {{-- <div class="brator-icon-link-text">
                                 <a href="{{ route('registration') }}">
                                     <div class="click-item-count">
 
                                     </div><b>Registration</b>
                                 </a>
-                            </div>
+                            </div> --}}
                         @endif
 
                     </div>
@@ -376,10 +381,10 @@
                         </div>
                         <div class="menu-cat-list-item">
                             <ul>
-                                <li><a href="#_">Air Filters</a></li>
-                                <li>
-                                    <a href="#_">Auto Parts</a>
-                                </li>
+                                {{-- @foreach ($categories as $category)
+                                <li><a href="{{ route('product-category.show', ['product_category' => $category->slug]) }}">{{$category->name}}</a></li>
+                                @endforeach --}}
+
 
                                 {{-- <li>
                                 <a href="#_">Car Care</a>
@@ -397,10 +402,10 @@
                                 </ul>
                             </li> --}}
 
-                                {{-- <li><a href="#_">Clearance</a></li> --}}
-                                {{-- <li><a href="#_">Entertaiments</a></li> --}}
-                                {{-- <li><a href="#_">Exhaust System</a></li> --}}
-                                {{-- <li><a href="#_">Exteriors</a></li> --}}
+                                <li><a href="#_">Clearance</a></li>
+                                <li><a href="#_">Entertaiments</a></li>
+                                <li><a href="#_">Exhaust System</a></li>
+                                <li><a href="#_">Exteriors</a></li>
                                 {{-- <li><a href="#_">Fluids & Chemicals</a></li> --}}
                                 {{-- <li><a href="#_">Interiors</a></li> --}}
                                 {{-- <li><a href="#_">Performance</a></li> --}}
@@ -417,11 +422,11 @@
                         <div class="brator-header-menu">
                             <ul class="list-style-outside-none">
                                 <li class="down-menu"><a href=" {{ route('/') }} ">Home</a>
-                                    <ul>
+                                    {{-- <ul>
                                         <li><a href="index.html">Home 1</a></li>
                                         <li><a href="index-2.html">Home 2</a></li>
                                         <li><a href="index-3.html">Home 3</a></li>
-                                    </ul>
+                                    </ul> --}}
                                 </li>
                                 <li><a href="about.html">About us</a></li>
                                 <li class="mega-menu-li"><a href="#_">Auto Parts <span
@@ -500,7 +505,7 @@
                                         <li><a href="blog-single.html">Blog Single</a></li>
                                     </ul>
                                 </li>
-                                <li class="down-menu">
+                                {{-- <li class="down-menu">
                                     <a href="#_">Pages</a>
                                     <ul>
                                         <li><a href="cart.html">Cart</a></li>
@@ -512,7 +517,7 @@
                                         <li><a href="shop-sub-category-list.html">Shop Sub Category List</a></li>
                                         <li><a href="shop-sub-category.html">Shop Sub Category</a></li>
                                     </ul>
-                                </li>
+                                </li> --}}
                                 <li><a href="contact-us.html">Contact Us</a></li>
                             </ul>
                         </div>
@@ -590,11 +595,11 @@
                         <div class="brator-header-menu">
                             <ul class="list-style-outside-none">
                                 <li class="down-menu"><a href="#_">Home</a>
-                                    <ul>
+                                    {{-- <ul>
                                         <li><a href="index.html">Home 1</a></li>
                                         <li><a href="index-2.html">Home 2</a></li>
                                         <li><a href="index-3.html">Home 3</a></li>
-                                    </ul>
+                                    </ul> --}}
                                 </li>
                                 <li><a href="about.html">About us</a></li>
                                 <li class="mega-menu-li"><a href="#_">Auto Parts <span
@@ -673,7 +678,7 @@
                                         <li><a href="blog-single.html">Blog Single</a></li>
                                     </ul>
                                 </li>
-                                <li class="down-menu">
+                                {{-- <li class="down-menu">
                                     <a href="#_">Pages</a>
                                     <ul>
                                         <li><a href="cart.html">Cart</a></li>
@@ -685,11 +690,11 @@
                                         <li><a href="shop-sub-category-list.html">Shop Sub Category List</a></li>
                                         <li><a href="shop-sub-category.html">Shop Sub Category</a></li>
                                     </ul>
-                                </li>
+                                </li> --}}
                                 <li><a href="contact-us.html">Contact Us</a></li>
                             </ul>
                         </div>
-                        <div class="brator-header-menu-info"><a href="#_">Order Status</a></div>
+                        {{-- <div class="brator-header-menu-info"><a href="#_">Order Status</a></div> --}}
                     </div>
                 </div>
             </div>

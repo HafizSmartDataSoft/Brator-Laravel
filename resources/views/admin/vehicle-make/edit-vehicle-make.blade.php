@@ -8,7 +8,7 @@
         <main class="container flex-grow p-4 sm:p-6">
             <!-- Page Title Starts -->
             <div class="mb-6 flex flex-col justify-between gap-y-1 sm:flex-row sm:gap-y-0">
-                <h5>ADD Brand</h5>
+                <h5>ADD Make</h5>
 
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
@@ -18,7 +18,7 @@
                         <a href="#">Ecommerce</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="#">Add Brand</a>
+                        <a href="#">Add Make</a>
                     </li>
                 </ol>
             </div>
@@ -47,11 +47,11 @@
                             <h5 class="m-0 p-0 text-xl font-semibold text-slate-700 dark:text-slate-200">General
                             </h5>
                             <p class="mb-4 p-0 text-sm font-normal text-slate-400">
-                                Basic information of Brand
+                                Basic information of Make
                             </p>
 
                             <div class="py-2">
-                                <label class="label label-required mb-1 font-medium" for="name">Brand Name
+                                <label class="label label-required mb-1 font-medium" for="name">Make Name
                                 </label>
                                 <input type="text" class="input" name="name" id="name"
                                     value="{{ $vehicle_make->name }}" />
@@ -119,7 +119,7 @@
                         <div class="sticky top-20 rounded-primary bg-white p-6 shadow dark:bg-slate-800">
                             <h5 class="m-0 p-0 text-xl font-semibold text-slate-700 dark:text-slate-200">
                                 Organization</h5>
-                            <p class="mb-4 p-0 text-sm font-normal text-slate-400">Better organize your Brand</p>
+                            <p class="mb-4 p-0 text-sm font-normal text-slate-400">Better organize your Make</p>
                             <div class="flex flex-col gap-4">
                                 <div>
                                     <label class="label label-required mb-1 font-medium" for="status"> Status

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductSubCategory;
+use App\Models\VehicleMake;
+use App\Models\VehicleModel;
 use App\Models\VehicleYear;
 
 class HomeController extends Controller
@@ -15,16 +17,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // return $years = VehicleYear::all()->pluck('year')->unique();
+
         return view(
             'frontend.home.home',
             [
                 // 'categories' => Category::orderBy('created_at','DESC')->paginate(4),
-                'categories' => Category::all(),
+                'categories' => Category::where('status', 2)->whereNull('parent_id')->take(30)->get(),
                 'products' => Product::all(),
                 'sub_categories' => ProductSubCategory::all(),
                 'years' => VehicleYear::all()->pluck('year')->unique(),
-
+                'makes'=>VehicleMake::where('status', 2)->take(30)->select('slug','name')->get(),
+                'models'=>VehicleModel::where('status', 2)->take(30)->select('slug','name')->get(),
             ]
         );
     }

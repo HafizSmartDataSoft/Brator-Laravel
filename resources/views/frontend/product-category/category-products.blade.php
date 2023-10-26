@@ -417,9 +417,9 @@
                                                 xml:space="preserve">
                                                 <path
                                                     d="M62.1,57L44.6,42.8c3.2-4.2,5-9.3,5-14.7c0-6.5-2.5-12.5-7.1-17.1v0c-9.4-9.4-24.7-9.4-34.2,0C3.8,15.5,1.3,21.6,1.3,28
-                                                                            c0,6.5,2.5,12.5,7.1,17.1c4.7,4.7,10.9,7.1,17.1,7.1c6.1,0,12.1-2.3,16.8-6.8l17.7,14.3c0.3,0.3,0.7,0.4,1.1,0.4
-                                                                            c0.5,0,1-0.2,1.4-0.6C63,58.7,62.9,57.6,62.1,57z M10.8,42.7C6.9,38.8,4.8,33.6,4.8,28s2.1-10.7,6.1-14.6c4-4,9.3-6,14.6-6
-                                                                            c5.3,0,10.6,2,14.6,6c3.9,3.9,6.1,9.1,6.1,14.6S43.9,38.8,40,42.7C32,50.7,18.9,50.7,10.8,42.7z" />
+                                                                                    c0,6.5,2.5,12.5,7.1,17.1c4.7,4.7,10.9,7.1,17.1,7.1c6.1,0,12.1-2.3,16.8-6.8l17.7,14.3c0.3,0.3,0.7,0.4,1.1,0.4
+                                                                                    c0.5,0,1-0.2,1.4-0.6C63,58.7,62.9,57.6,62.1,57z M10.8,42.7C6.9,38.8,4.8,33.6,4.8,28s2.1-10.7,6.1-14.6c4-4,9.3-6,14.6-6
+                                                                                    c5.3,0,10.6,2,14.6,6c3.9,3.9,6.1,9.1,6.1,14.6S43.9,38.8,40,42.7C32,50.7,18.9,50.7,10.8,42.7z" />
                                             </svg>
                                         </div>
                                     </div>
@@ -668,7 +668,18 @@
                                         <div class="brator-product-single-item-area splide__slide design-two">
                                             <div class="brator-product-single-item-info info-content-flex">
                                                 <div class="brator-product-single-item-info-left">
-                                                    <div class="yollow-batch">New</div>
+
+                                                    @php
+                                                        $updated_at = $product->updated_at;
+                                                        $currentDate = date('Y-m-d');
+                                                        $dateDifference = strtotime($updated_at) - strtotime($currentDate);
+                                                        $daysDifference = round($dateDifference / 86400); // 86400 seconds in a day
+                                                    @endphp
+
+                                                    @if ($daysDifference >= 0 && $daysDifference <= 7)
+                                                        <div class="yollow-batch">New</div>
+                                                    @endif
+
                                                     @php
                                                         $discount = round((($product->base_price - $product->sale_price) / $product->base_price) * 100);
                                                         // @dd($discount)
@@ -689,7 +700,8 @@
                                                         </svg></a></div>
                                             </div>
                                             <div class="brator-product-single-item-img">
-                                                <a href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}">
+                                                <a
+                                                    href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}">
 
                                                     @if ($product->featured_image)
                                                         <img class="lazyload"
@@ -775,7 +787,7 @@
                                                     @endif
                                                 </div>
                                                 <div class="brator-product-single-item-btn"><a
-                                                        href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}">Add
+                                                        href="{{ route('product.cart', ['product' => $product->sku]) }}">Add
                                                         to cart</a></div>
                                             </div>
                                         </div>
@@ -865,8 +877,16 @@
                                 <div class="brator-product-single-item-area design-two">
                                     <div class="brator-product-single-item-info info-content-flex">
                                         <div class="brator-product-single-item-info-left">
+                                            @php
+                                            $updated_at = $product->updated_at;
+                                            $currentDate = date('Y-m-d');
+                                            $dateDifference = strtotime($updated_at) - strtotime($currentDate);
+                                            $daysDifference = round($dateDifference / 86400); // 86400 seconds in a day
+                                        @endphp
+
+                                        @if ($daysDifference >= 0 && $daysDifference <= 7)
                                             <div class="yollow-batch">New</div>
-                                            {{-- @php
+                                        @endif                                            {{-- @php
                                                 $discount = round((($product->base_price - $product->sale_price) / $product->base_price) * 100);
                                                 // @dd($discount)
 
@@ -971,7 +991,7 @@
                                             @endif
                                         </div>
                                         <div class="brator-product-single-item-btn"><a
-                                                href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}">Add
+                                                href="{{ route('product.cart', ['product' => $product->sku]) }}">Add
                                                 to
                                                 cart</a>
                                             <!-- a(href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}") #{cat}-->
@@ -1085,8 +1105,16 @@
                                         <div class="brator-product-single-item-area splide__slide design-two">
                                             <div class="brator-product-single-item-info info-content-flex">
                                                 <div class="brator-product-single-item-info-left">
+                                                    @php
+                                                    $updated_at = $product->updated_at;
+                                                    $currentDate = date('Y-m-d');
+                                                    $dateDifference = strtotime($updated_at) - strtotime($currentDate);
+                                                    $daysDifference = round($dateDifference / 86400); // 86400 seconds in a day
+                                                @endphp
+
+                                                @if ($daysDifference >= 0 && $daysDifference <= 7)
                                                     <div class="yollow-batch">New</div>
-                                                    {{-- @php
+                                                @endif                                                    {{-- @php
                                                         $discount = round((($product->base_price - $product->sale_price) / $product->base_price) * 100);
 
                                                         // @dd($discount)
@@ -1194,7 +1222,7 @@
                                                     @endif
                                                 </div>
                                                 <div class="brator-product-single-item-btn"><a
-                                                        href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}">Add
+                                                        href="{{ route('product.cart', ['product' => $product->sku]) }}">Add
                                                         to cart</a></div>
                                             </div>
                                         </div>
@@ -1386,7 +1414,7 @@
                                         }
                                     </div>
 
-                                    <div class="brator-product-single-item-btn"><a href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}">Add to
+                                    <div class="brator-product-single-item-btn"><a href="{{ route('product.cart', ['product' => $product->sku]) }}">Add to
                                             cart</a>
                                         <!-- a(href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}") #{cat}-->
                                     </div>

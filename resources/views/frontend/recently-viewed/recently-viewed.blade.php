@@ -648,8 +648,16 @@
                                             <div class="brator-product-single-item-area splide__slide design-two">
                                                 <div class="brator-product-single-item-info info-content-flex">
                                                     <div class="brator-product-single-item-info-left">
-                                                        <div class="yollow-batch">New</div>
                                                         @php
+                                                        $updated_at = $product->updated_at;
+                                                        $currentDate = date('Y-m-d');
+                                                        $dateDifference = strtotime($updated_at) - strtotime($currentDate);
+                                                        $daysDifference = round($dateDifference / 86400); // 86400 seconds in a day
+                                                    @endphp
+
+                                                    @if ($daysDifference >= 0 && $daysDifference <= 7)
+                                                        <div class="yollow-batch">New</div>
+                                                    @endif                                                         @php
                                                             $discount = round((($product->base_price - $product->sale_price) / $product->base_price) * 100);
 
                                                             // @dd($discount)

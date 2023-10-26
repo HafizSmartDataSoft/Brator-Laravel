@@ -1,6 +1,6 @@
 <aside class="sidebar">
     <!-- Sidebar Header Starts -->
-    <a href="/">
+    <a href="/dashboard">
         <div class="sidebar-header">
             <div class="sidebar-logo-icon">
                 <img src="{{ asset('adminAsset') }}/svg/logo.svg" alt="logo" class="h-[45px]" />
@@ -33,7 +33,7 @@
             </a>
             <ul class="sidebar-submenu">
                 <li>
-                    <a href="/" class="sidebar-submenu-item active">Analytics</a>
+                    <a href="/dashboard" class="sidebar-submenu-item active">Analytics</a>
                 </li>
                 <li>
                     <a href="./ecommerce.html" class="sidebar-submenu-item">Ecommerce</a>

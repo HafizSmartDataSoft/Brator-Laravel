@@ -54,23 +54,24 @@
                                                     </li>
                                                 @endif
                                             @endforeach
-                                        @else
+                                        @elseif($product_detail->featured_image)
                                             <li><a class="js-tabs__title" href="#"
                                                     style="background-image:url({{ asset($product_detail->featured_image) }})"></a>
                                             </li>
+                                        @else
                                         @endif
                                     </ul>
                                 </div>
 
                                 @if (count($gallaryImages) != 0)
                                     @foreach ($gallaryImages as $gallaryImage)
-                                    @if ($gallaryImage->image_type == 'large_default' && $gallaryImage->image_type != null)
-                                        <div class="js-tabs__content brator-product-img-tab-item"><img data-action="zoom"
-                                                class="lazyload"
-                                                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                data-src="{{ asset($gallaryImage->image) }}" alt="alt" />
-                                            <p>click image to zoom in</p>
-                                        </div>
+                                        @if ($gallaryImage->image_type == 'large_default' && $gallaryImage->image_type != null)
+                                            <div class="js-tabs__content brator-product-img-tab-item"><img
+                                                    data-action="zoom" class="lazyload"
+                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                                    data-src="{{ asset($gallaryImage->image) }}" alt="alt" />
+                                                <p>click image to zoom in</p>
+                                            </div>
                                         @endif
                                     @endforeach
                                 @else
@@ -83,7 +84,6 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="brator-product-layout-header-content">
                             <div class="brator-product-hero-content">
                                 <div class="brator-product-hero-content-info">
@@ -98,7 +98,16 @@
                                     </div>
                                     <div class="brator-product-hero-content-review">
 
-                                        <div class="product-batch yollow-batch">new</div>
+                                        @php
+                                        $updated_at = $product_detail->updated_at;
+                                        $currentDate = date('Y-m-d');
+                                        $dateDifference = strtotime($updated_at) - strtotime($currentDate);
+                                        $daysDifference = round($dateDifference / 86400); // 86400 seconds in a day
+                                    @endphp
+
+                                    @if ($daysDifference >= 0 && $daysDifference <= 7)
+                                        <div class="yollow-batch">New</div>
+                                    @endif
                                         @php
                                             $discount = round((($product_detail->base_price - $product_detail->sale_price) / $product_detail->base_price) * 100);
                                             // @dd($discount)
@@ -209,7 +218,7 @@
                                             <div class="brator-product-single-light-info-s">
                                                 <h5>Tags:</h5>
                                                 @foreach ($tags as $tag)
-                                                    <a href="#_"> {{ $tag->name }} </a>
+                                                    <a href="{{ route('product-tag.show', ['product_tag' => $tag->id]) }}"> {{ $tag->name }} </a>
                                                 @endforeach
                                                 {{-- <a href="#_">tires</a>
                                                 <a href="#_">rims</a>
@@ -266,7 +275,6 @@
                                                 </div>
                                             </div> --}}
                                             <div class="brator-product-single-cart-add">
-
                                                 <a
                                                     href="{{ route('product.cart', ['product' => $product_detail->sku]) }}">
                                                     <button>Add
@@ -337,9 +345,7 @@
                                 <div class="brator-product-single-item-area design-two">
                                     <div class="brator-product-single-item-info d-none info-content-flex">
                                         <div class="brator-product-single-item-info-left">
-                                            <div class="yollow-batch">New</div>
 
-                                            <div class="stock-out-batch">Out OF stock</div>
                                         </div>
                                         <div class="brator-product-single-item-info-right"><a href="#_">
                                                 <svg class="bi bi-suit-heart-fill" xmlns="http://www.w3.org/2000/svg"
@@ -1533,8 +1539,16 @@
                                         <div class="brator-product-single-item-area splide__slide design-two">
                                             <div class="brator-product-single-item-info info-content-flex">
                                                 <div class="brator-product-single-item-info-left">
-                                                    <div class="yollow-batch">New</div>
                                                     @php
+                                                    $updated_at = $product->updated_at;
+                                                    $currentDate = date('Y-m-d');
+                                                    $dateDifference = strtotime($updated_at) - strtotime($currentDate);
+                                                    $daysDifference = round($dateDifference / 86400); // 86400 seconds in a day
+                                                @endphp
+
+                                                @if ($daysDifference >= 0 && $daysDifference <= 7)
+                                                    <div class="yollow-batch">New</div>
+                                                @endif                                                    @php
                                                         $discount = round((($product->base_price - $product->sale_price) / $product->base_price) * 100);
 
                                                         // @dd($discount)
