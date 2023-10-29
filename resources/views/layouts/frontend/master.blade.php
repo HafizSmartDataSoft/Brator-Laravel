@@ -25,6 +25,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend') }}/css/theme-style-home-two.css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend') }}/css/url.css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend') }}/css/rtl.css" />
+
+
     @vite([])
     @yield('css')
 </head>
@@ -78,8 +80,8 @@
             </path>
         </svg><span>top</span>
     </button>
-
     <script src="{{ asset('assets/frontend') }}/js/jquery.js"></script>
+    <script src="{{ asset('assets/frontend') }}/js/jquery.raty.js"></script>
     <script src="{{ asset('assets/frontend') }}/js/waypoints.min.js"></script>
     <script src="{{ asset('assets/frontend') }}/js/counterup.min.js"></script>
     <script src="{{ asset('assets/frontend') }}/js/nouislider.js"></script>

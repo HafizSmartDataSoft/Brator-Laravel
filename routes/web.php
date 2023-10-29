@@ -17,6 +17,7 @@ use App\Http\Controllers\MakeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductViewController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\VehicleMakeController;
@@ -57,7 +58,7 @@ Route::group(["prefix" => "categories",], function () {
 });
 
 Route::group(["prefix" => "product",], function () {
-    Route::resource('product-`details`', ProductViewController::class);
+    Route::resource('product-details', ProductViewController::class);
 });
 Route::get('discount/validate', [DiscountController::class, 'discountValidate'])->name('discount.validate');
 Route::get('product/recentlyViewed', [ProductViewController::class, 'recentlyViewed'])->name('product.recentlyViewed');
@@ -105,6 +106,8 @@ Route::middleware('auth')->group(function () {
         Route::get('add-model', [YearMakeModelController::class, 'addModel'])->name('add-model');
         Route::get('add-brand', [ProductController2::class, 'addBrand'])->name('add-brand');
     });
+    Route::resource('product-tag', TagsController::class);
+    Route::resource('review', ReviewController::class);
 
     Route::group(["prefix" => "admin",], function () {
         Route::resource('make', MakeController::class);
@@ -114,7 +117,6 @@ Route::middleware('auth')->group(function () {
         Route::resource('vehicle-make', VehicleMakeController::class);
         Route::resource('vehicle-year', VehicleYearController::class);
         Route::resource('product', ProductController::class);
-        Route::resource('product-tag', TagsController::class);
         Route::resource('discount', DiscountController::class);
         Route::resource('order', OrderController::class);
         Route::post('save-dropzone-image', [ProductController::class, 'dropzoneImage'])->name('save-dropzone-image');

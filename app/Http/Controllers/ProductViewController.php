@@ -15,6 +15,7 @@ use App\Models\DiscountProduct;
 use App\Models\DiscountSubCategory;
 use App\Models\Order;
 use App\Models\Orderdetail;
+use App\Models\UserReview;
 use Illuminate\Http\Request;
 
 class ProductViewController extends Controller
@@ -70,7 +71,9 @@ class ProductViewController extends Controller
         // return $product_sub_category;
         $gallaryImages = ProductImage::where('product_id', $product_detail->id)->get();
 
-        // return $product_detail;
+        // return UserReview::with('user')
+        // ->where('product_id', $product_detail->id)
+        // ->get();
         return view(
             'frontend.product.product-details',
             [
@@ -81,6 +84,9 @@ class ProductViewController extends Controller
                 'sub_categories' => $product_sub_category,
                 'tags' => $tags,
                 'gallaryImages' => $gallaryImages,
+                'reviews'=>UserReview::with('user')
+                ->where('product_id', $product_detail->id)
+                ->get(),
             ]
         );
     }
@@ -105,7 +111,6 @@ class ProductViewController extends Controller
 
     public function checkout(Request $request)
     {
-
         // return $request;
         $product_category = session()->get('product_category');
         $discount = 0;
@@ -215,7 +220,6 @@ class ProductViewController extends Controller
                         'items' => $items,
                         'discount' => $discount,
                         'coupon_code' => $discount_sub_category->coupon_code,
-
                     ]);
                 }
             }

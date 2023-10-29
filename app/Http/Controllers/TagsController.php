@@ -74,13 +74,14 @@ class TagsController extends Controller
         $tagProducts->appends(['orderby' => $orderby]);
         $recentProducts = session()->get('products.recently_viewed');
         $categories = Category::with('children')->whereNull('parent_id')->get();
-        return view(  'frontend.shop.show-products',
+        return view(  'frontend.product-tag.tag-products' ,
         [
             'recentlyViewed' => Product::find($recentProducts),
             'categories' => $categories,
             'allProducts' => Product::all(),
             'orderby' => $orderby,
             'products' => $tagProducts,
+            'tag'=>$productTag,
         ]
         );
         // return $productTag->products;

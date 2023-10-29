@@ -42,9 +42,9 @@
                                 {{-- <select class="select-sub-model-parts brator-select-active" disabled="disabled">
                                     <option value="anything">Sub Model</option>
                                 </select> --}}
-                                {{-- <select class="select-engine-parts brator-select-active" disabled="disabled">
+                                <select class="select-engine-parts brator-select-active" disabled="disabled">
                                     <option value="anything">Engine</option>
-                                </select> --}}
+                                </select>
                                 <button type="submit">Search</button>
                             </div>
                         </form>
@@ -154,9 +154,13 @@
                     </div>
                     {{-- {{ $categories->onEachSide(10)->links() }} --}}
                 </div>
-                <div style="display: inline;" class="brator-categories-list-load-more">
-                    <button id="load_more" class="brator-categories-more-button">Load More</button>
-                </div>
+
+                @if (count($categories) >= 15)
+                    <div style="display: inline;" class="brator-categories-list-load-more">
+                        <button id="load_more" class="brator-categories-more-button">Load More</button>
+                    </div>
+                @endif
+
             </div>
         </div>
     </div>
@@ -333,18 +337,22 @@
 
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="brator-makes-list-view-more">
-                            <button> <span><b>view more</b>
-                                    <svg class="bi bi-chevron-down" xmlns="http://www.w3.org/2000/svg" width="16"
-                                        height="16" fill="currentColor" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z">
-                                        </path>
-                                    </svg></span>
-                            </button>
+                    @if (count($makes) >= 20)
+                        <div class="col-md-12">
+                            <div class="brator-makes-list-view-more">
+                                <button> <span><b>view more</b>
+                                        <svg class="bi bi-chevron-down" xmlns="http://www.w3.org/2000/svg" width="16"
+                                            height="16" fill="currentColor" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z">
+                                            </path>
+                                        </svg></span>
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    @endif
+
+
                 </div>
                 <div class="row js-tabs__content">
                     <div class="col-md-12">
@@ -389,9 +397,10 @@
                             @endforeach
                         </div>
                     </div>
+                    @if (count($models) >= 20)
                     <div class="col-md-12">
                         <div class="brator-makes-list-view-more">
-                            <button> <span><b>view more 2</b>
+                            <button> <span><b>view more</b>
                                     <svg class="bi bi-chevron-down" xmlns="http://www.w3.org/2000/svg" width="16"
                                         height="16" fill="currentColor" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd"
@@ -401,6 +410,8 @@
                             </button>
                         </div>
                     </div>
+                @endif
+
                 </div>
 
             </div>

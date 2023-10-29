@@ -54,6 +54,11 @@ class Product extends Model
         return $this->belongsToMany(TagModel::class, 'product_tags', 'product_id', 'tag_id');
     }
 
+    public function userReviews()
+    {
+        return $this->hasMany(UserReview::class);
+    }
+
     // public function subCategory()
     // {
     //     return $this->hasMany(ProductSubCategory::class, 'product_id');

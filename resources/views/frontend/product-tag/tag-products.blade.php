@@ -1,7 +1,7 @@
 @extends('layouts.frontend.master')
 
 @section('title')
-    {{ $category->name }} -Brator
+    {{ $tag->name }} -Brator
 @endsection
 @section('meta')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -14,9 +14,8 @@
                 <div class="col-md-6">
                     <div class="brator-banner-area design-four lazyload">
                         <div class="brator-banner-content">
-                            <h2><a href="#_">{{ $category->name }}</a></h2>
+                            <h2><a href="#_">{{ $tag->name }}</a></h2>
                             <p>
-                                {{ $category->description }}
                                 {{-- @php
                                     $description = 'Your description goes here...'; // Replace with your actual description
                                     $words = preg_split('/\s+/', $category->description);
@@ -32,16 +31,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="brator-banner-area design-four lazyload">
 
-                        @if ($category->image)
-                            {{-- <img src="{{ asset($category->image) }}" data-src="{{ asset($category->image) }}" alt="logo" /> --}}
-                            <img class="lazyload"
-                                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                data-src="{{ asset($category->image) }}" alt="logo" /></a>
-                        @endif
-
-                    </div>
                 </div>
             </div>
         </div>
@@ -56,17 +46,7 @@
                     <div class="brator-breadcrumb">
                         <ul>
                             <li><a href="#_">Home</a></li>
-                            @if ($category->parent_id == null)
-                                <li><a href="#_">{{ $category->name }}</a></li>
-                            @else
-                                @foreach ($categories as $parent_category)
-                                    @if ($category->parent_id == $parent_category->id)
-                                        <li><a href="#_">{{ $parent_category->name }}</a></li>
-                                    @endif
-                                @endforeach
-                                <li><a href="#_">{{ $category->name }}</a></li>
-                            @endif
-
+                            <li><a href="#_">{{ $tag->name }}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -417,9 +397,9 @@
                                                 xml:space="preserve">
                                                 <path
                                                     d="M62.1,57L44.6,42.8c3.2-4.2,5-9.3,5-14.7c0-6.5-2.5-12.5-7.1-17.1v0c-9.4-9.4-24.7-9.4-34.2,0C3.8,15.5,1.3,21.6,1.3,28
-                                                                                    c0,6.5,2.5,12.5,7.1,17.1c4.7,4.7,10.9,7.1,17.1,7.1c6.1,0,12.1-2.3,16.8-6.8l17.7,14.3c0.3,0.3,0.7,0.4,1.1,0.4
-                                                                                    c0.5,0,1-0.2,1.4-0.6C63,58.7,62.9,57.6,62.1,57z M10.8,42.7C6.9,38.8,4.8,33.6,4.8,28s2.1-10.7,6.1-14.6c4-4,9.3-6,14.6-6
-                                                                                    c5.3,0,10.6,2,14.6,6c3.9,3.9,6.1,9.1,6.1,14.6S43.9,38.8,40,42.7C32,50.7,18.9,50.7,10.8,42.7z" />
+                                                                                            c0,6.5,2.5,12.5,7.1,17.1c4.7,4.7,10.9,7.1,17.1,7.1c6.1,0,12.1-2.3,16.8-6.8l17.7,14.3c0.3,0.3,0.7,0.4,1.1,0.4
+                                                                                            c0.5,0,1-0.2,1.4-0.6C63,58.7,62.9,57.6,62.1,57z M10.8,42.7C6.9,38.8,4.8,33.6,4.8,28s2.1-10.7,6.1-14.6c4-4,9.3-6,14.6-6
+                                                                                            c5.3,0,10.6,2,14.6,6c3.9,3.9,6.1,9.1,6.1,14.6S43.9,38.8,40,42.7C32,50.7,18.9,50.7,10.8,42.7z" />
                                             </svg>
                                         </div>
                                     </div>
@@ -878,15 +858,15 @@
                                     <div class="brator-product-single-item-info info-content-flex">
                                         <div class="brator-product-single-item-info-left">
                                             @php
-                                            $updated_at = $product->updated_at;
-                                            $currentDate = date('Y-m-d');
-                                            $dateDifference = strtotime($updated_at) - strtotime($currentDate);
-                                            $daysDifference = round($dateDifference / 86400); // 86400 seconds in a day
-                                        @endphp
+                                                $updated_at = $product->updated_at;
+                                                $currentDate = date('Y-m-d');
+                                                $dateDifference = strtotime($updated_at) - strtotime($currentDate);
+                                                $daysDifference = round($dateDifference / 86400); // 86400 seconds in a day
+                                            @endphp
 
-                                        @if ($daysDifference >= 0 && $daysDifference <= 7)
-                                            <div class="yollow-batch">New</div>
-                                        @endif                                            {{-- @php
+                                            @if ($daysDifference >= 0 && $daysDifference <= 7)
+                                                <div class="yollow-batch">New</div>
+                                            @endif {{-- @php
                                                 $discount = round((($product->base_price - $product->sale_price) / $product->base_price) * 100);
                                                 // @dd($discount)
 
@@ -921,14 +901,17 @@
                                                     class="h-10 w-10 rounded-primary border border-slate-300 dark:border-slate-400"
                                                     alt="Category" />
                                             @endif
-
                                         </a>
-
-
                                     </div>
                                     <div class="brator-product-single-item-mini">
-                                        <div class="brator-product-single-item-cat"><a
-                                                href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}">{{ $category->name }}</a>
+                                        <div class="brator-product-single-item-cat">
+                                            @foreach ($categories as $category)
+                                            @if ($category->id==$product->parent_category)
+                                            <a
+                                            href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}">{{ $category->name }}</a>
+                                            @endif
+
+                                            @endforeach
                                         </div>
                                         <div class="brator-product-single-item-title">
                                             <h5><a
@@ -1106,15 +1089,15 @@
                                             <div class="brator-product-single-item-info info-content-flex">
                                                 <div class="brator-product-single-item-info-left">
                                                     @php
-                                                    $updated_at = $product->updated_at;
-                                                    $currentDate = date('Y-m-d');
-                                                    $dateDifference = strtotime($updated_at) - strtotime($currentDate);
-                                                    $daysDifference = round($dateDifference / 86400); // 86400 seconds in a day
-                                                @endphp
+                                                        $updated_at = $product->updated_at;
+                                                        $currentDate = date('Y-m-d');
+                                                        $dateDifference = strtotime($updated_at) - strtotime($currentDate);
+                                                        $daysDifference = round($dateDifference / 86400); // 86400 seconds in a day
+                                                    @endphp
 
-                                                @if ($daysDifference >= 0 && $daysDifference <= 7)
-                                                    <div class="yollow-batch">New</div>
-                                                @endif                                                    {{-- @php
+                                                    @if ($daysDifference >= 0 && $daysDifference <= 7)
+                                                        <div class="yollow-batch">New</div>
+                                                    @endif {{-- @php
                                                         $discount = round((($product->base_price - $product->sale_price) / $product->base_price) * 100);
 
                                                         // @dd($discount)
@@ -1244,187 +1227,6 @@
     <script>
         $('.product-ordering').on('change', 'select.orderby', function() {
             $(this).closest('form').trigger('submit');
-        });
-    </script>
-
-
-    <script>
-        $(document).ready(function() {
-
-            var currentUrl = window.location.href;
-
-            let asset_url = "{{ asset('/') }}";
-            $('#sort_by').on('change', function() {
-
-                const sortBy = $(this).val();
-                var category = @json($category);
-
-                // if (sortBy == 0) {
-                //     var newUrl = updateQueryStringParameter(currentUrl, 'sort_by', 'latest');
-                // } else if (sortBy == 1) {
-                //     var newUrl = updateQueryStringParameter(currentUrl, 'sort_by', 'low-high');
-
-                // } else if (sortBy == 2) {
-                //     var newUrl = updateQueryStringParameter(currentUrl, 'sort_by', 'high-low');
-                // }
-
-                // console.log(newUrl);
-
-                // window.history.pushState({
-                //     path: newUrl
-                // }, '', newUrl);
-
-                // console.log(category.id);
-
-                // const dataToSend = {
-                //     category: category.id,
-                // };
-
-                $.ajax({
-                    url: "{{ route('products.sort') }}",
-                    method: 'GET',
-
-                    data: {
-                        category_id: category.id,
-                        sort_by: sortBy
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}" // Include the CSRF token in the headers
-                    },
-                    success: function(data) {
-                        // window.location.href = "{{ route('product-category.show', ['product_category' => $category->slug]) }}";
-                        window.location.href =
-                            "{{ route('product-category.show', ['product_category' => $category->slug, 'sort_by' => '2']) }}";
-                        // console.log(data.links);
-                        // const productHTML = `${data.links('pagination::tailwind') }`;
-                        // $('#product-link').html(productHTML);
-                        // updateProductListAndPagination(data);
-                        // const updatedProductList = generateProductListHTML(data);
-                        // $('#product-list').html(updatedProductList);
-                        // Update the product list or grid with sorted data
-                        // You can replace the content of the product grid or list with the sorted data here.
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(error);
-                        // Handle errors or display an error message to the user.
-                    }
-                });
-            });
-
-            function updateQueryStringParameter(uri, key, value) {
-                var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
-                var separator = uri.indexOf('?') !== -1 ? "&" : "?";
-                if (uri.match(re)) {
-                    return uri.replace(re, '$1' + key + "=" + value + '$2');
-                } else {
-                    return uri + separator + key + "=" + value;
-                }
-            }
-
-            function updateProductListAndPagination(products) {
-                const productContainer = $('#product-list-container');
-                const productHTML = generateProductListHTML(products);
-
-                // Update the product list
-                const productList = productContainer.find('#product-list');
-                productList.html(productHTML);
-            }
-
-
-
-            function generateProductListHTML(products) {
-                // console.log(products.data);
-                const htmlArray = [];
-                products.data.forEach(function(product) {
-
-                    const priceDifference = product.base_price - product.sale_price;
-                    const discount = ((priceDifference) / product.base_price) * 100;
-
-                    // console.log(product.);
-                    const productHTML = `
-                    <div class="brator-product-single-item-area design-two">
-                                <div class="brator-product-single-item-info info-content-left">
-                                    <div class="brator-product-single-item-info-left">
-                                        <div class="yollow-batch">New</div>
-                                                    ${discount > 0 ? `<div class="off-batch">{{ $discount }}% OFF</div>` :``}
-                                    </div>
-                                </div>
-
-                                <div class="brator-product-single-item-img"><a  href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}"><img class="lazyload"
-                                            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                            data-src="${asset_url+product.featured_image}" alt="alt" /></a></div>
-                                <div class="brator-product-single-item-mini">
-                                    <div class="brator-product-single-item-cat"><a
-                                            href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}">{{ $category->name }}</a></div>
-                                    <div class="brator-product-single-item-title">
-                                        <h5><a  href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}"> ${product.name}</a></h5>
-                                    </div>
-                                    <div class="brator-product-single-item-review">
-                                        <div class="brator-review">
-                                            <svg class="active" fill="#000000" width="52" height="52"
-                                                version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                viewBox="0 0 64 64">
-                                                <path
-                                                    d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                </path>
-                                            </svg>
-                                            <svg class="active" fill="#000000" width="52" height="52"
-                                                version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                viewBox="0 0 64 64">
-                                                <path
-                                                    d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                </path>
-                                            </svg>
-                                            <svg class="active" fill="#000000" width="52" height="52"
-                                                version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                viewBox="0 0 64 64">
-                                                <path
-                                                    d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                </path>
-                                            </svg>
-                                            <svg class="active" fill="#000000" width="52" height="52"
-                                                version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                viewBox="0 0 64 64">
-                                                <path
-                                                    d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                </path>
-                                            </svg>
-                                            <svg class="d-active" fill="#000000" width="52" height="52"
-                                                version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                viewBox="0 0 64 64">
-                                                <path
-                                                    d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                </path>
-                                            </svg>
-                                        </div>
-                                        <div class="brator-review-text">
-                                            <p>14 Reviews</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="brator-product-single-item-price">
-                                        ${priceDifference > 0 ?
-                                            `<p><sub>${product.sale_price}</sub><b class="pub">${product.base_price}</b></p>` :
-                                            `<p><sub>${product.sale_price}</sub></p>`
-                                        }
-                                    </div>
-
-                                    <div class="brator-product-single-item-btn"><a href="{{ route('product.cart', ['product' => $product->sku]) }}">Add to
-                                            cart</a>
-                                        <!-- a(href="{{ route('product-details.show', ['product_detail' => $product->sku]) }}") #{cat}-->
-                                    </div>
-                                </div>
-                            </div>
-           `;
-                    htmlArray.push(productHTML);
-                });
-                return htmlArray.join('');
-            }
         });
     </script>
 @endsection

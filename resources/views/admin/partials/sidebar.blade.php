@@ -84,6 +84,15 @@
             <ul class="sidebar-submenu">
                 <li>
                     <a href="./invoice-create.html" class="sidebar-submenu-item"> Create </a>
+                         <ul class="sidebar-submenu">
+                <li>
+                    <a href="./invoice-create.html" class="sidebar-submenu-item"> Create </a>
+                </li>
+
+                <li>
+                    <a href="./invoice-details.html" class="sidebar-submenu-item"> Details </a>
+                </li>
+            </ul>
                 </li>
 
                 <li>
