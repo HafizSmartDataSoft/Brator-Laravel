@@ -82,7 +82,8 @@
 
     <script src="{{ asset('js') }}/custom/analytics.js" type="module"></script>
     @yield('js')
-    @if (session('success'))
+
+    {{-- @if (session('success'))
         <script>
             setTimeout(function() {
                 alert("{{ session('success') }}");
@@ -94,7 +95,7 @@
                 alert("{{ session('update_success') }}");
             }, 500);
         </script>
-    @endif
+    @endif --}}
 </body>
 
 </html>

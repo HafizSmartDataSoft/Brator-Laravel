@@ -80,10 +80,10 @@
                             </button>
                         </div>
 
-                        <a class="btn btn-primary" href="{{ route('order.create') }}" role="button">
+                        {{-- <a class="btn btn-primary" href="{{ route('order.create') }}" role="button">
                             <i data-feather="plus" height="1rem" width="1rem"></i>
                             <span class="hidden sm:inline-block">Add Order</span>
-                        </a>
+                        </a> --}}
                     </div>
                     <!-- Customer Action Ends -->
                 </div>

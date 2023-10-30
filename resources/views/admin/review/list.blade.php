@@ -1,19 +1,14 @@
 @extends('layouts.admin.master')
-
 @section('title')
-    Admin - Category List
+    Admin - Review List
 @endsection
-
-
 @section('content')
-
-
     <div class="content">
         <!-- Main Content Starts -->
         <main class="container flex-grow p-4 sm:p-6">
             <!-- Page Title Starts -->
             <div class="mb-6 flex flex-col justify-between gap-y-1 sm:flex-row sm:gap-y-0">
-                <h5>Category List</h5>
+                <h5>Review List</h5>
 
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
@@ -23,15 +18,15 @@
                         <a href="#">Ecommerce</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="#">Category List</a>
+                        <a href="#">Review List</a>
                     </li>
                 </ol>
             </div>
             <!-- Page Title Ends -->
 
-            <!-- Category List Starts -->
+            <!-- Review List Starts -->
             <div class="space-y-4">
-                <!-- Category Header Starts -->
+                <!-- Review Header Starts -->
                 <div class="flex flex-col items-center justify-between gap-y-4 md:flex-row md:gap-y-0">
                     <!-- Customer Search Starts -->
                     <form
@@ -84,99 +79,80 @@
                                 <span class="hidden sm:inline-block">Export</span>
                             </button>
                         </div>
-
-                        <a class="btn btn-primary" href="{{route('e-commerce.add-category')}}" role="button">
+                        {{-- <a class="btn btn-primary" href="{{ route('review.create') }}" role="button">
                             <i data-feather="plus" height="1rem" width="1rem"></i>
-                            <span class="hidden sm:inline-block"> Category List</span>
-                        </a>
+                            <span class="hidden sm:inline-block">Add Review</span>
+                        </a> --}}
                     </div>
                     <!-- Customer Action Ends -->
                 </div>
-                <!-- Category Header Ends -->
+                <!-- Review Header Ends -->
 
-                <!-- Category Table Starts -->
+                <!-- Review Table Starts -->
                 <div class="table-responsive whitespace-nowrap rounded-primary">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="w-[40%] uppercase">Sl No</th>
-                                <th class="w-[40%] uppercase">Category name</th>
-                                <th class="w-[10%] uppercase">Description</th>
-                                <th class="w-[10%] uppercase">Image</th>
-                                <th class="w-[10%] uppercase">Parent Category</th>
-                                <th class="w-[10%] uppercase">Status</th>
-                                <th class="w-[5%] !text-right uppercase">Actions</th>
+                                <th class="w-[40%] uppercase"> Sl No</th>
+                                <th class="w-[40%] uppercase"> Title</th>
+                                <th class="w-[40%] uppercase"> Rating</th>
+                                <th class="w-[10%] uppercase"> Comment</th>
+                                <th class="w-[10%] uppercase"> Status</th>
+                                {{-- <th class="w-[5%] !text-right uppercase">Actions</th> --}}
                             </tr>
                         </thead>
                         <tbody>
                             @php $i=1 @endphp
-                            @foreach ($categories as $category)
+
+                            @foreach ($reviews as $review)
                                 <tr>
                                     <td>{{ $i++ }}</td>
+
+
+                                    <td> {{ $review->title }}</td>
+                                    <td>{{ $review->rating }}</td>
                                     <td>
-                                        <div class="flex items-center gap-3">
-                                            <div>
-                                                <h6
-                                                    class="whitespace-nowrap text-sm font-medium text-slate-700 dark:text-slate-100">
-                                                    {{ $category->name }}
-                                                </h6>
-                                            </div>
-                                        </div>
+                                        @php
+                                            $firstTenWords = implode(' ', array_slice(str_word_count($review->comment, 1), 0, 10));
+                                            // $remainingContent = substr($review->comment, strlen($firstTenWords)) . '...';
+                                            if ($firstTenWords != null) {
+                                                $firstTenWords = $firstTenWords . '...';
+                                            }
+                                        @endphp
+                                        {{ $firstTenWords }}
                                     </td>
                                     <td>
-                                        <p class="truncate text-xs text-slate-500 dark:text-slate-400">
-                                            {{ Illuminate\Support\Str::limit($category->description, $limit = 20, $end = '....') }}
-                                            {{-- <a href="{{ route('category.show', ['id' => $category->id]) }}">Read More</a> --}}
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <div class="flex items-center gap-3">
-                                            @if ($category->image != null)
-                                                <img src="{{ asset($category->image) }}"
-                                                    class="h-10 w-10 rounded-primary border border-slate-300 dark:border-slate-400"
-                                                    alt="Category" />
-                                            @else
-                                                <img src="{{ asset('adminAsset/no-image/noimage.jpeg') }}"
-                                                    class="h-10 w-10 rounded-primary border border-slate-300 dark:border-slate-400"
-                                                    alt="Category" />
-                                            @endif
 
-                                        </div>
-                                    </td>
 
-                                    @if ($category->parent_id == null)
-                                        <td>
-                                            <div class="flex items-center gap-3">
-                                                <div>
-                                                    <h6>
-
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    @endif
-                                    @foreach ($categories as $parent_category)
-                                        @if ($parent_category->id == $category->parent_id)
-                                            <td>
-                                                <div class="flex items-center gap-3">
-                                                    <div>
-                                                        <h6
-                                                            class="whitespace-nowrap text-sm font-medium text-slate-700 dark:text-slate-100">
-                                                            {{ $parent_category->name }}
-                                                        </h6>
-                                                    </div>
-                                                </div>
-                                            </td>
+                                        @if ($review->status == 1)
+                                            <a href="">
+                                                <form action="{{ route('review.update', ['review' => $review->id]) }}"
+                                                    method="post">
+                                                    @method('put')
+                                                    @csrf
+                                                    <input type="hidden" value="1" name="status">
+                                                    <input type="submit" value="Unavailable" class="btn btn-danger">
+                                                </form>
+                                            </a>
+                                        @else
+                                            <a>
+                                                <form action="{{ route('review.update', ['review' => $review->id]) }}"
+                                                    method="post">
+                                                    @method('put')
+                                                    @csrf
+                                                    <input type="hidden" value="1" name="status">
+                                                    <input type="submit" value="Available" class="btn btn-success">
+                                                </form>
+                                            </a>
                                         @endif
-                                    @endforeach
 
-                                    <td>
-                                        <div class="badge badge-soft-success">
-                                            {{ $category->status == 0 ? 'Draft' : '' }}
-                                            {{ $category->status == 1 ? 'Inactive' : '' }}
-                                            {{ $category->status == 2 ? 'Active' : '' }}
+
+                                        {{-- <div class="badge badge-soft-success">
+                                            {{ $review->status == 0 ? 'Inactive' : '' }}
+                                            {{ $review->status == 1 ? 'Active' : '' }}
+                                        </div> --}}
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         <div class="flex justify-end">
                                             <div class="dropdown" data-placement="bottom-start">
                                                 <div class="dropdown-toggle">
@@ -184,29 +160,31 @@
                                                 </div>
                                                 <div class="dropdown-content w-40">
                                                     <ul class="dropdown-list">
-                                                        {{-- <li class="dropdown-list-item">
+                                                        <li class="dropdown-list-item">
                                                             <a href="javascript:void(0)" class="dropdown-link">
                                                                 <i class="h-5 text-slate-400"
                                                                     data-feather="external-link"></i>
                                                                 <span>Details</span>
                                                             </a>
-                                                        </li> --}}
+                                                        </li>
                                                         <li class="dropdown-list-item">
-                                                            <a href="{{ route('e-commerce.edit-category', ['id' => $category->id]) }}"
+                                                            <a href="{{ route('review.edit', ['review' => $review->id]) }}"
                                                                 class="dropdown-link">
                                                                 <i class="h-5 text-slate-400" data-feather="edit"></i>Edit
                                                             </a>
                                                         </li>
                                                         <li class="dropdown-list-item">
-                                                            <a href="javascript:void(0)" class="dropdown-link">
+                                                            <a class="dropdown-link">
                                                                 <i class="h-5 text-slate-400" data-feather="trash"></i>
-                                                                <form action="{{ route('e-commerce.delete-category') }}"
+                                                                <form
+                                                                    action="{{ route('review.destroy', ['review' => $review->id]) }}"
                                                                     method="post">
+                                                                    @method('DELETE')
                                                                     @csrf
-                                                                    <input type="hidden" value="{{ $category->id }}"
-                                                                        name="id">
+                                                                    <input type="hidden" value="{{ $review->id }}"
+                                                                        name="review_id">
                                                                     <input type="submit" value="Delete"
-                                                                        onclick="return confirm('Do you want to Delete category !')">
+                                                                        onclick="return confirm('Do you want to Delete Review !')">
                                                                 </form>
                                                             </a>
                                                         </li>
@@ -214,15 +192,15 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-                <!-- category Table Ends -->
+                <!-- Review Table Ends -->
 
-                <!-- category Pagination Starts -->
+                <!-- Review Pagination Starts -->
                 <div class="flex flex-col items-center justify-between gap-y-4 md:flex-row">
                     <p class="text-xs font-normal text-slate-400">Showing 1 to 10 of 50 result</p>
                     <!-- Pagination -->
@@ -256,9 +234,9 @@
                         </ul>
                     </nav>
                 </div>
-                <!-- category Pagination Ends -->
+                <!-- Review Pagination Ends -->
             </div>
-            <!-- category List Ends -->
+            <!-- Review List Ends -->
         </main>
         <!-- Main Content Ends -->
 
@@ -279,12 +257,3 @@
         <!-- Footer Ends -->
     </div>
 @endsection
-
-{{-- @section('js')
-@if(session('update_success'))
-<script>
-  // JavaScript code to display an alert
-  alert("{{ session('update_success') }}");
-</script>
-@endif
-@endsection --}}

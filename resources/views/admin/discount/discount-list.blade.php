@@ -97,6 +97,7 @@
                                 <th class="w-[40%] uppercase">Sl No</th>
                                 <th class="w-[40%] uppercase">Coupon Title</th>
                                 <th class="w-[10%] uppercase">Coupon Code</th>
+                                <th class="w-[10%] uppercase">Coupon Work On</th>
                                 {{-- <th class="w-[10%] uppercase">Start and Expire Date</th> --}}
                                 <th class="w-[10%] uppercase">Status</th>
                                 <th class="w-[5%] !text-right uppercase">Actions</th>
@@ -112,6 +113,7 @@
                                         {{ $discount->coupon_title }}
                                     </td>
                                     <td> {{ $discount->coupon_code }}</td>
+                                    <td> {{ $discount->discount_on }}</td>
                                     {{-- <td> {{ $discount->start_date }} to {{ $discount->expiration_date }}</td> --}}
 
                                     <td>
@@ -128,13 +130,13 @@
                                                 </div>
                                                 <div class="dropdown-content w-40">
                                                     <ul class="dropdown-list">
-                                                        <li class="dropdown-list-item">
+                                                        {{-- <li class="dropdown-list-item">
                                                             <a href="{{ route('discount.show', ['discount'=> $discount->id]) }}" class="dropdown-link">
                                                                 <i class="h-5 text-slate-400"
                                                                     data-feather="external-link"></i>
                                                                 <span>Details</span>
                                                             </a>
-                                                        </li>
+                                                        </li> --}}
                                                         <li class="dropdown-list-item">
                                                             <a href="{{ route('discount.edit', ['discount'=> $discount->id]) }}"
                                                                 class="dropdown-link">

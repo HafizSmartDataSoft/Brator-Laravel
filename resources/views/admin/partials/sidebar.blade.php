@@ -112,6 +112,7 @@
                     'Image Setting' => 'image-setting.index',
 
                     'Product' => 'product.index',
+                    'Review' => 'review.index',
                     ' Tags ' => 'product-tag.index',
                     // "Add Vehicle Make" => "vehicle-make.create",
                     ' Vehicle Make ' => 'vehicle-make.index',

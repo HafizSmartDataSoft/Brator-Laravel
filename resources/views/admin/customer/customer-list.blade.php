@@ -80,10 +80,10 @@
                             </button>
                         </div>
 
-                        <a class="btn btn-primary" href="{{ route('customer.create') }}" role="button">
+                        {{-- <a class="btn btn-primary" href="{{ route('customer.create') }}" role="button">
                             <i data-feather="plus" height="1rem" width="1rem"></i>
                             <span class="hidden sm:inline-block">Add Customer</span>
-                        </a>
+                        </a> --}}
                     </div>
                     <!-- Customer Action Ends -->
                 </div>
@@ -132,10 +132,10 @@
                                                 <div class="dropdown-content w-40">
                                                     <ul class="dropdown-list">
                                                         <li class="dropdown-list-item">
-                                                            <a href="{{ route('customer.show', ['customer'=> $customer->id]) }}" class="dropdown-link">
+                                                            <a href="{{ route('customer.products', ['id'=> $customer->id]) }}" class="dropdown-link">
                                                                 <i class="h-5 text-slate-400"
                                                                     data-feather="external-link"></i>
-                                                                <span>Details</span>
+                                                                <span>Orders</span>
                                                             </a>
                                                         </li>
                                                         <li class="dropdown-list-item">

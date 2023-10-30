@@ -98,7 +98,7 @@
     <script src="{{ asset('assets/frontend') }}/js/brator-script.js"></script>
 
     @yield('js')
-    @if (session('success'))
+    {{-- @if (session('success'))
         <script>
             setTimeout(function() {
                 alert("{{ session('success') }}");
@@ -106,20 +106,19 @@
         </script>
     @endif
     @if (session('error'))
-    <script>
-        setTimeout(function() {
-            alert("{{ session('error') }}");
-        }, 500);
-    </script>
-@endif
-    @if (session('update_success'))
         <script>
-             setTimeout(function() {
-                alert("{{ session('update_success') }}");
+            setTimeout(function() {
+                alert("{{ session('error') }}");
             }, 500);
-
         </script>
     @endif
+    @if (session('update_success'))
+        <script>
+            setTimeout(function() {
+                alert("{{ session('update_success') }}");
+            }, 500);
+        </script>
+    @endif --}}
 </body>
 
 </html>

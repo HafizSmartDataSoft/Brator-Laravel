@@ -84,9 +84,9 @@ class ProductViewController extends Controller
                 'sub_categories' => $product_sub_category,
                 'tags' => $tags,
                 'gallaryImages' => $gallaryImages,
-                'reviews'=>UserReview::with('user')
-                ->where('product_id', $product_detail->id)
-                ->get(),
+                'reviews' => UserReview::with('user')
+                    ->where('product_id', $product_detail->id)
+                    ->get(),
             ]
         );
     }
@@ -228,7 +228,6 @@ class ProductViewController extends Controller
         // return $discount_on_subCategories;
 
         $discount = 0;
-
         if (session('customerId')) {
             $customerId = session('customerId');
             $customer = Customer::find($customerId);
@@ -238,7 +237,6 @@ class ProductViewController extends Controller
                 'items' => $items,
                 'customer' => $customer,
                 'discount' => $discount,
-
             ]);
         }
 
@@ -246,7 +244,6 @@ class ProductViewController extends Controller
             'product' => $product,
             'items' => $items,
             'discount' => $discount,
-
         ]);
     }
 
@@ -255,7 +252,6 @@ class ProductViewController extends Controller
      */
     public function update(Request $request, Product $product_detail)
     {
-        //
     }
 
     /**
@@ -367,7 +363,6 @@ class ProductViewController extends Controller
             $startDate = Carbon::parse($discountAvaiable->start_date);
             $expairDate = Carbon::parse($discountAvaiable->expiration_date);
             if ($discountAvaiable->discount_on == 'all_products') {
-
                 if ($currentDate->lt($expairDate) && $currentDate->gt($startDate) && $subtotal >= $discountAvaiable->minimum_amount && ($discountAvaiable->max_uses > 0 || $discountAvaiable->max_uses == null)) {
                     if ($discountAvaiable->coupon_type == 'fixed_amount') {
                         $discount = $discountAvaiable->discount;
@@ -384,11 +379,8 @@ class ProductViewController extends Controller
                 }
             } else if ($discountAvaiable->discount_on == 'product') {
                 $products = DiscountProduct::where('discount_id', $discountAvaiable->id)->get();
-
                 foreach ($products as $product) {
                     if ($product->product_id == $discountProduct->id) {
-
-
                         if ($currentDate->lt($expairDate) && $currentDate->gt($startDate) && $subtotal >= $discountAvaiable->minimum_amount && ($discountAvaiable->max_uses > 0 || $discountAvaiable->max_uses == null)) {
                             if ($discountAvaiable->coupon_type == 'fixed_amount') {
                                 $discount = $discountAvaiable->discount;

@@ -122,12 +122,13 @@ class OrderController extends Controller
      */
     public function show(Orderdetail $order)
     {
-        // return $order;
+        // return $coupon;
         return view(
             'admin.order.order-details',
             [
                 'order' => $order,
                 'product' => Product::find($order->product_id),
+                'coupon'=>Discount::where('coupon_code',$order->coupons)->first(),
 
             ]
         );

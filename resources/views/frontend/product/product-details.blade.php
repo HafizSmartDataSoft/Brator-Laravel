@@ -20,11 +20,12 @@
             $total_rating += $review->rating;
         @endphp
     @endforeach
-    @if ($num_reviews!=0)
 
-    @php
-    $total_rating = (float) $total_rating / (float)$num_reviews;
-    @endphp
+    @if ($num_reviews != 0)
+        @php
+            $total_rating = (float) $total_rating / (float) $num_reviews;
+            $total_rating = number_format($total_rating, 2);
+        @endphp
     @endif
 
 
@@ -817,108 +818,22 @@
                                     </div>
 
                                     <div class="brator-review-comment-count">
-                                        {{-- <div class="brator-review">
-                                            <svg class="active" fill="#000000" width="52" height="52"
-                                                version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                viewBox="0 0 64 64">
-                                                <path
-                                                    d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                </path>
-                                            </svg>
-                                            <svg class="active" fill="#000000" width="52" height="52"
-                                                version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                viewBox="0 0 64 64">
-                                                <path
-                                                    d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                </path>
-                                            </svg>
-                                            <svg class="active" fill="#000000" width="52" height="52"
-                                                version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                viewBox="0 0 64 64">
-                                                <path
-                                                    d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                </path>
-                                            </svg>
-                                            <svg class="active" fill="#000000" width="52" height="52"
-                                                version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                viewBox="0 0 64 64">
-                                                <path
-                                                    d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                </path>
-                                            </svg>
-                                            <svg class="d-active" fill="#000000" width="52" height="52"
-                                                version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                viewBox="0 0 64 64">
-                                                <path
-                                                    d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                </path>
-                                            </svg>
-                                        </div> --}}
+
                                         <div class="user-review-rating" data-score="{{ $total_rating }}"></div>
 
                                         <div class="brator-review-text">
                                             <p>{{ $num_reviews }} Reviews</p>
                                         </div>
                                     </div>
-
                                 </div>
-
                                 <div class="brator-review-comment-list">
                                     @foreach ($reviews as $review)
                                         <div class="brator-review-comment-single-item">
                                             <div class="brator-review-comment-single-img"><img class="lazyload"
                                                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                    data-src="{{ asset('assets/frontend') }}/images/profile-01.jpg"
+                                                    data-src="{{ asset('assets/frontend') }}/images/profile-03.jpg"
                                                     alt="logo" /></div>
                                             <div class="brator-review-comment-single-content">
-                                                {{-- <div class="brator-review">
-                                                <svg class="active" fill="#000000" width="52" height="52"
-                                                    version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 64 64">
-                                                    <path
-                                                        d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="active" fill="#000000" width="52" height="52"
-                                                    version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 64 64">
-                                                    <path
-                                                        d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="active" fill="#000000" width="52" height="52"
-                                                    version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 64 64">
-                                                    <path
-                                                        d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="active" fill="#000000" width="52" height="52"
-                                                    version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 64 64">
-                                                    <path
-                                                        d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="d-active" fill="#000000" width="52" height="52"
-                                                    version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 64 64">
-                                                    <path
-                                                        d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                    </path>
-                                                </svg>
-                                            </div> --}}
-
                                                 <div class="brator-review-comment-single-title">
 
                                                     <h6> {{ $review->title }} </h6>
@@ -930,224 +845,88 @@
                                                     <h6><a href="#_">{{ $review->user->first_name }} </a>on
                                                         {{ $review->created_at->diffForHumans() }} </h6>
                                                 </div>
+                                                @if (session('customerId') == $review->user_id)
+                                                    <div style="display: inline;" class="brator-review-comment-date">
+                                                        <h6><a id="rating_edit" href="#_">Edit </a>
+                                                        </h6>
+                                                    </div>
+                                                @endif
+
                                             </div>
                                         </div>
                                     @endforeach
-
-                                    {{-- <div class="brator-review-comment-single-item">
-                                        <div class="brator-review-comment-single-img"><img class="lazyload"
-                                                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                data-src="{{ asset('assets/frontend') }}/images/profile-02.jpg"
-                                                alt="logo" /></div>
-                                        <div class="brator-review-comment-single-content">
-                                            <div class="brator-review">
-                                                <svg class="active" fill="#000000" width="52" height="52"
-                                                    version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 64 64">
-                                                    <path
-                                                        d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="active" fill="#000000" width="52" height="52"
-                                                    version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 64 64">
-                                                    <path
-                                                        d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="active" fill="#000000" width="52" height="52"
-                                                    version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 64 64">
-                                                    <path
-                                                        d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="active" fill="#000000" width="52" height="52"
-                                                    version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 64 64">
-                                                    <path
-                                                        d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="d-active" fill="#000000" width="52" height="52"
-                                                    version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 64 64">
-                                                    <path
-                                                        d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                    </path>
-                                                </svg>
-                                            </div>
-                                            <div class="brator-review-comment-single-title">
-                                                <h6>Awesome product</h6>
-                                                <p>Location,fantastic. Accommodation, fantastic. Host, fantastic. If you
-                                                    have a chance to book this beautiful cottage do not hesitate.You will be
-                                                    glad you did. Thank you alison for a great stay and we will definitely
-                                                    be returning. Dave and sue.</p>
-                                            </div>
-                                            <div class="brator-review-comment-date">
-                                                <h6><a href="#_">Paulo Dybala </a>on 25 April, 2022 </h6>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                    {{-- <div class="brator-review-comment-single-item">
-                                        <div class="brator-review-comment-single-img"><img class="lazyload"
-                                                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                data-src="{{ asset('assets/frontend') }}/images/profile-03.jpg"
-                                                alt="logo" /></div>
-                                        <div class="brator-review-comment-single-content">
-                                            <div class="brator-review">
-                                                <svg class="active" fill="#000000" width="52" height="52"
-                                                    version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 64 64">
-                                                    <path
-                                                        d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="active" fill="#000000" width="52" height="52"
-                                                    version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 64 64">
-                                                    <path
-                                                        d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="active" fill="#000000" width="52" height="52"
-                                                    version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 64 64">
-                                                    <path
-                                                        d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="active" fill="#000000" width="52" height="52"
-                                                    version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 64 64">
-                                                    <path
-                                                        d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="d-active" fill="#000000" width="52" height="52"
-                                                    version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 64 64">
-                                                    <path
-                                                        d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                    </path>
-                                                </svg>
-                                            </div>
-                                            <div class="brator-review-comment-single-title">
-                                                <h6>Fast delivery &amp; quality product</h6>
-                                                <p>Location,fantastic. Accommodation, fantastic. Host, fantastic. If you
-                                                    have a chance to book this beautiful cottage do not hesitate.You will be
-                                                    glad you did. Thank you alison for a great stay and we will definitely
-                                                    be returning. Dave and sue.</p>
-                                            </div>
-                                            <div class="brator-review-comment-date">
-                                                <h6><a href="#_">Paulo Dybala </a>on 25 April, 2022 </h6>
-                                            </div>
-                                        </div>
-                                    </div> --}}
                                 </div>
                             </div>
 
-                            @if (session('customerId') )
-                            @if ($user_review_check!=1)
-
-                                <form action="{{ route('review.store') }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    {{-- @if (session()->has('message'))
-                                        <p class="text-xl text-gray-600 md:pr-16">
-                                            {{ session('message') }}
-                                        </p>
-                                    @endif --}}
-                                    <input type="hidden" name="product_id" value="{{ $product_detail->id }}">
-                                    <div class="brator-contact-form-area product-review-form">
-                                        <div class="brator-contact-form-header">
-                                            <h2>Write Your Review</h2>
-                                        </div>
-                                        {{-- <div class="brator-contact-form"><span class="info-text">Your email address will not be
-                                        b.published. Required fields are marked *</span></div> --}}
-                                        <div class="product-review-tag"
-                                            style="  display: flex;
+                            @if (session('customerId'))
+                                @if ($user_review_check != 1)
+                                    <form id="myForm" action="{{ route('review.store') }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{ $product_detail->id }}">
+                                        <div class="brator-contact-form-area product-review-form">
+                                            <div class="brator-contact-form-header">
+                                                <h2>Write Your Review</h2>
+                                            </div>
+                                            <div class="product-review-tag"
+                                                style="  display: flex;
                                      align-items: center;">
-                                            <p>Your Rating</p>
-                                            <div id="review-rating"></div>
-
-                                            {{-- <div class="brator-review">
-                                        <svg class="active" fill="#000000" width="52" height="52" version="1.1"
-                                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                            x="0px" y="0px" viewBox="0 0 64 64">
-                                            <path
-                                                d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                            </path>
-                                        </svg>
-                                        <svg class="active" fill="#000000" width="52" height="52" version="1.1"
-                                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                            x="0px" y="0px" viewBox="0 0 64 64">
-                                            <path
-                                                d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                            </path>
-                                        </svg>
-                                        <svg class="active" fill="#000000" width="52" height="52" version="1.1"
-                                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                            x="0px" y="0px" viewBox="0 0 64 64">
-                                            <path
-                                                d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                            </path>
-                                        </svg>
-                                        <svg class="active" fill="#000000" width="52" height="52" version="1.1"
-                                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                            x="0px" y="0px" viewBox="0 0 64 64">
-                                            <path
-                                                d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                            </path>
-                                        </svg>
-                                        <svg class="d-active" fill="#000000" width="52" height="52"
-                                            version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                            viewBox="0 0 64 64">
-                                            <path
-                                                d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                            </path>
-                                        </svg>
-                                        </div> --}}
-
+                                                <p>Your Rating</p>
+                                                <div id="review-rating"></div>
+                                            </div>
                                         </div>
+                                        <div class="brator-contact-form-fields">
+                                            <div class="brator-contact-form-field">
+                                                <input type="text" name="title"
+                                                    placeholder="Give your review a tittle (Optional)" />
+                                            </div>
+                                            <div class="brator-contact-form-field">
+                                                <textarea name="comment" placeholder="Write your review here"></textarea>
+                                            </div>
+                                            <div class="brator-contact-form-field">
+                                                <button type="submit">Submit Review</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                @else
+                                    <div style="display: none;" id="edit-rating">
+                                        @foreach ($reviews as $review)
+                                            @if ($review->user_id == session('customerId'))
+                                                <form id="myForm"
+                                                    action="{{ route('review.update', ['review' => $review->id]) }}"
+                                                    method="POST" enctype="multipart/form-data">
+                                                    @method('PUT')
+                                                    @csrf
+                                                    <input type="hidden" name="product_id"
+                                                        value="{{ $product_detail->id }}">
+                                                    <div class="brator-contact-form-area product-review-form">
+                                                        <div class="brator-contact-form-header">
+                                                            <h2>Write Your Review</h2>
+                                                        </div>
+                                                        <div class="product-review-tag"
+                                                            style="  display: flex; align-items: center;">
+                                                            <p>Your Rating</p>
+                                                            <div id="review-rating" data-score="{{ $review->rating }}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="brator-contact-form-fields">
+                                                        <div class="brator-contact-form-field">
+                                                            <input type="text" name="title"
+                                                                placeholder="Give your review a tittle (Optional)"
+                                                                value="{{ $review->title }}" />
+                                                        </div>
+                                                        <div class="brator-contact-form-field">
+                                                            <textarea name="comment" placeholder="Write your review here">{{ $review->comment }}</textarea>
+                                                        </div>
+                                                        <div class="brator-contact-form-field">
+                                                            <button type="submit">Update Review</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            @endif
+                                        @endforeach
                                     </div>
-                                    <div class="brator-contact-form-fields">
-                                        <div class="brator-contact-form-field">
-                                            <input type="text" name="title"
-                                                placeholder="Give your review a tittle (Optional)" />
-                                        </div>
-                                        <div class="brator-contact-form-field">
-                                            <textarea name="comment" placeholder="Write your review here"></textarea>
-                                        </div>
-                                        {{-- <div class="brator-contact-form-field-two-items">
-                                        <div class="brator-contact-form-field">
-                                            <input type="text" name="mail" placeholder="Your Email *" />
-                                        </div>
-                                        <div class="brator-contact-form-field">
-                                            <input type="text" name="name" placeholder="Name" />
-                                        </div>
-                                    </div> --}}
-
-                                        {{-- <div class="brator-contact-form-field-info">
-                                        <input type="checkbox" name="condcion" /><span>Save my name & email in this
-                                            browser
-                                            for next time i comment</span>
-                                    </div> --}}
-                                        <div class="brator-contact-form-field">
-                                            <button type="submit">Submit Review</button>
-                                        </div>
-                                    </div>
-                                </form>
                                 @endif
                             @else
                                 <p> To give review you need to login first.</p>
@@ -1606,7 +1385,7 @@
                                                         $updated_at = $product->updated_at;
                                                         $currentDate = date('Y-m-d');
                                                         $dateDifference = strtotime($updated_at) - strtotime($currentDate);
-                                                        $daysDifference = round($dateDifference / 86400); // 86400 seconds in a day
+                                                        $daysDifference = round($dateDifference / 86400);
                                                     @endphp
 
                                                     @if ($daysDifference >= 0 && $daysDifference <= 7)
@@ -1810,6 +1589,45 @@
                     // alert('ID: ' + this.id + "\nscore: " + score + "\nevent: " + evt);
                 }
             });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const myDiv = document.getElementById('edit-rating');
+            const rating_edit = document.getElementById('rating_edit');
+
+            rating_edit.addEventListener('click', function() {
+                // $('#category').hide();
+                if (myDiv.style.display === 'none' || myDiv.style.display === '') {
+                    myDiv.style.display = 'inline';
+                    rating_edit.style.display = 'none';
+                } else {
+                    myDiv.style.display = 'none'; // Hide the div
+                }
+            });
+        });
+        // $('#category').show();
+    </script>
+    <script>
+        // var submitButton = document.getElementById("formbutton");
+        var submitButton = document.querySelector("#myForm button[type=submit]");
+        submitButton.addEventListener("click", function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            // Get the div element
+
+            const review_rating = document.getElementById('review-rating');
+            const inputElement = review_rating.querySelector('input');
+            const inputValue = inputElement.value;
+            console.log(inputValue);
+            // console.log(store);
+            if (inputValue != 0) {
+                document.getElementById('myForm').submit();
+            } else {
+                setTimeout(function() {
+                    alert("Please Select a Rating!");
+                }, 500);
+            }
         });
     </script>
 @endsection

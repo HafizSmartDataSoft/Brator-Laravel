@@ -417,9 +417,9 @@
                                                 xml:space="preserve">
                                                 <path
                                                     d="M62.1,57L44.6,42.8c3.2-4.2,5-9.3,5-14.7c0-6.5-2.5-12.5-7.1-17.1v0c-9.4-9.4-24.7-9.4-34.2,0C3.8,15.5,1.3,21.6,1.3,28
-                                                                                    c0,6.5,2.5,12.5,7.1,17.1c4.7,4.7,10.9,7.1,17.1,7.1c6.1,0,12.1-2.3,16.8-6.8l17.7,14.3c0.3,0.3,0.7,0.4,1.1,0.4
-                                                                                    c0.5,0,1-0.2,1.4-0.6C63,58.7,62.9,57.6,62.1,57z M10.8,42.7C6.9,38.8,4.8,33.6,4.8,28s2.1-10.7,6.1-14.6c4-4,9.3-6,14.6-6
-                                                                                    c5.3,0,10.6,2,14.6,6c3.9,3.9,6.1,9.1,6.1,14.6S43.9,38.8,40,42.7C32,50.7,18.9,50.7,10.8,42.7z" />
+                                                                                                                        c0,6.5,2.5,12.5,7.1,17.1c4.7,4.7,10.9,7.1,17.1,7.1c6.1,0,12.1-2.3,16.8-6.8l17.7,14.3c0.3,0.3,0.7,0.4,1.1,0.4
+                                                                                                                        c0.5,0,1-0.2,1.4-0.6C63,58.7,62.9,57.6,62.1,57z M10.8,42.7C6.9,38.8,4.8,33.6,4.8,28s2.1-10.7,6.1-14.6c4-4,9.3-6,14.6-6
+                                                                                                                        c5.3,0,10.6,2,14.6,6c3.9,3.9,6.1,9.1,6.1,14.6S43.9,38.8,40,42.7C32,50.7,18.9,50.7,10.8,42.7z" />
                                             </svg>
                                         </div>
                                     </div>
@@ -731,52 +731,36 @@
                                                     </h5>
                                                 </div>
                                                 <div class="brator-product-single-item-review">
-                                                    <div class="brator-review">
-                                                        <svg class="active" fill="#000000" width="52" height="52"
-                                                            version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 64 64">
-                                                            <path
-                                                                d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg class="active" fill="#000000" width="52" height="52"
-                                                            version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 64 64">
-                                                            <path
-                                                                d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg class="active" fill="#000000" width="52" height="52"
-                                                            version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 64 64">
-                                                            <path
-                                                                d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg class="active" fill="#000000" width="52" height="52"
-                                                            version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 64 64">
-                                                            <path
-                                                                d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg class="d-active" fill="#000000" width="52"
-                                                            height="52" version="1.1"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 64 64">
-                                                            <path
-                                                                d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                            </path>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="brator-review-text">
-                                                        <p>14 Reviews</p>
-                                                    </div>
+                                                    @if (count($product->userReviews) > 0)
+                                                        @php
+                                                            $num_userReviews = count($product->userReviews);
+                                                            $total_rating = 0;
+                                                        @endphp
+
+                                                        @foreach ($product->userReviews as $user_review)
+                                                            @php
+                                                                $total_rating += $user_review->rating;
+                                                            @endphp
+                                                        @endforeach
+
+                                                        @php
+                                                            $total_rating = (float) $total_rating / $num_userReviews;
+                                                            $total_rating = number_format($total_rating, 2);
+                                                        @endphp
+
+                                                        <div class="product-rating" data-score="{{ $total_rating }}">
+                                                        </div>
+                                                        <div class="brator-review-text">
+                                                            <p>{{ $num_userReviews }} Reviews</p>
+                                                        </div>
+                                                    @else
+                                                        <div class="product-rating" data-score="0"></div>
+                                                        <div class="brator-review-text">
+                                                            <p>0 Reviews</p>
+                                                        </div>
+                                                    @endif
+
+
                                                 </div>
                                                 <div class="brator-product-single-item-price">
                                                     @if ($product->base_price - $product->sale_price > 0)
@@ -878,15 +862,15 @@
                                     <div class="brator-product-single-item-info info-content-flex">
                                         <div class="brator-product-single-item-info-left">
                                             @php
-                                            $updated_at = $product->updated_at;
-                                            $currentDate = date('Y-m-d');
-                                            $dateDifference = strtotime($updated_at) - strtotime($currentDate);
-                                            $daysDifference = round($dateDifference / 86400); // 86400 seconds in a day
-                                        @endphp
+                                                $updated_at = $product->updated_at;
+                                                $currentDate = date('Y-m-d');
+                                                $dateDifference = strtotime($updated_at) - strtotime($currentDate);
+                                                $daysDifference = round($dateDifference / 86400); // 86400 seconds in a day
+                                            @endphp
 
-                                        @if ($daysDifference >= 0 && $daysDifference <= 7)
-                                            <div class="yollow-batch">New</div>
-                                        @endif                                            {{-- @php
+                                            @if ($daysDifference >= 0 && $daysDifference <= 7)
+                                                <div class="yollow-batch">New</div>
+                                            @endif {{-- @php
                                                 $discount = round((($product->base_price - $product->sale_price) / $product->base_price) * 100);
                                                 // @dd($discount)
 
@@ -921,10 +905,7 @@
                                                     class="h-10 w-10 rounded-primary border border-slate-300 dark:border-slate-400"
                                                     alt="Category" />
                                             @endif
-
                                         </a>
-
-
                                     </div>
                                     <div class="brator-product-single-item-mini">
                                         <div class="brator-product-single-item-cat"><a
@@ -936,51 +917,36 @@
                                                     {{ $product->name }}</a></h5>
                                         </div>
                                         <div class="brator-product-single-item-review">
-                                            <div class="brator-review">
-                                                <svg class="active" fill="#000000" width="52" height="52"
-                                                    version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 64 64">
-                                                    <path
-                                                        d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="active" fill="#000000" width="52" height="52"
-                                                    version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 64 64">
-                                                    <path
-                                                        d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="active" fill="#000000" width="52" height="52"
-                                                    version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 64 64">
-                                                    <path
-                                                        d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="active" fill="#000000" width="52" height="52"
-                                                    version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 64 64">
-                                                    <path
-                                                        d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                    </path>
-                                                </svg>
-                                                <svg class="d-active" fill="#000000" width="52" height="52"
-                                                    version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 64 64">
-                                                    <path
-                                                        d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                    </path>
-                                                </svg>
-                                            </div>
-                                            <div class="brator-review-text">
-                                                <p>14 Reviews</p>
-                                            </div>
+                                            @if (count($product->userReviews) > 0)
+                                                @php
+                                                    $num_userReviews = count($product->userReviews);
+                                                    $total_rating = 0;
+                                                @endphp
+
+                                                @foreach ($product->userReviews as $user_review)
+                                                    @php
+                                                        $total_rating += $user_review->rating;
+                                                    @endphp
+                                                @endforeach
+
+                                                @php
+                                                    $total_rating = (float) $total_rating / $num_userReviews;
+                                                    $total_rating = number_format($total_rating, 2);
+                                                @endphp
+
+                                                <div class="product-rating" data-score="{{ $total_rating }}">
+                                                </div>
+                                                <div class="brator-review-text">
+                                                    <p>{{ $num_userReviews }} Reviews</p>
+                                                </div>
+                                            @else
+                                                <div class="product-rating" data-score="0"></div>
+                                                <div class="brator-review-text">
+                                                    <p>0 Reviews</p>
+                                                </div>
+                                            @endif
+
+
                                         </div>
                                         <div class="brator-product-single-item-price">
                                             @if ($product->base_price - $product->sale_price > 0)
@@ -1106,15 +1072,15 @@
                                             <div class="brator-product-single-item-info info-content-flex">
                                                 <div class="brator-product-single-item-info-left">
                                                     @php
-                                                    $updated_at = $product->updated_at;
-                                                    $currentDate = date('Y-m-d');
-                                                    $dateDifference = strtotime($updated_at) - strtotime($currentDate);
-                                                    $daysDifference = round($dateDifference / 86400); // 86400 seconds in a day
-                                                @endphp
+                                                        $updated_at = $product->updated_at;
+                                                        $currentDate = date('Y-m-d');
+                                                        $dateDifference = strtotime($updated_at) - strtotime($currentDate);
+                                                        $daysDifference = round($dateDifference / 86400); // 86400 seconds in a day
+                                                    @endphp
 
-                                                @if ($daysDifference >= 0 && $daysDifference <= 7)
-                                                    <div class="yollow-batch">New</div>
-                                                @endif                                                    {{-- @php
+                                                    @if ($daysDifference >= 0 && $daysDifference <= 7)
+                                                        <div class="yollow-batch">New</div>
+                                                    @endif {{-- @php
                                                         $discount = round((($product->base_price - $product->sale_price) / $product->base_price) * 100);
 
                                                         // @dd($discount)
@@ -1166,52 +1132,36 @@
                                                     </h5>
                                                 </div>
                                                 <div class="brator-product-single-item-review">
-                                                    <div class="brator-review">
-                                                        <svg class="active" fill="#000000" width="52" height="52"
-                                                            version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 64 64">
-                                                            <path
-                                                                d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg class="active" fill="#000000" width="52" height="52"
-                                                            version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 64 64">
-                                                            <path
-                                                                d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg class="active" fill="#000000" width="52" height="52"
-                                                            version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 64 64">
-                                                            <path
-                                                                d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg class="active" fill="#000000" width="52" height="52"
-                                                            version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 64 64">
-                                                            <path
-                                                                d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                            </path>
-                                                        </svg>
-                                                        <svg class="d-active" fill="#000000" width="52"
-                                                            height="52" version="1.1"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                            viewBox="0 0 64 64">
-                                                            <path
-                                                                d="M59.7,23.9l-18.1-2.8L33.4,3.9c-0.6-1.2-2.2-1.2-2.8,0l-8.2,17.3L4.4,23.9c-1.3,0.2-1.8,1.9-0.8,2.8l13.1,13.5l-3.1,18.9  c-0.2,1.3,1.1,2.4,2.3,1.6l16.3-8.9l16.2,8.9c1.1,0.6,2.5-0.4,2.2-1.6l-3.1-18.9l13.1-13.5C61.4,25.8,61,24.1,59.7,23.9z">
-                                                            </path>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="brator-review-text">
-                                                        <p>14 Reviews</p>
-                                                    </div>
+                                                    @if (count($product->userReviews) > 0)
+                                                        @php
+                                                            $num_userReviews = count($product->userReviews);
+                                                            $total_rating = 0;
+                                                        @endphp
+
+                                                        @foreach ($product->userReviews as $user_review)
+                                                            @php
+                                                                $total_rating += $user_review->rating;
+                                                            @endphp
+                                                        @endforeach
+
+                                                        @php
+                                                            $total_rating = (float) $total_rating / $num_userReviews;
+                                                            $total_rating = number_format($total_rating, 2);
+                                                        @endphp
+
+                                                        <div class="product-rating" data-score="{{ $total_rating }}">
+                                                        </div>
+                                                        <div class="brator-review-text">
+                                                            <p>{{ $num_userReviews }} Reviews</p>
+                                                        </div>
+                                                    @else
+                                                        <div class="product-rating" data-score="0"></div>
+                                                        <div class="brator-review-text">
+                                                            <p>0 Reviews</p>
+                                                        </div>
+                                                    @endif
+
+
                                                 </div>
                                                 <div class="brator-product-single-item-price">
                                                     @if ($product->base_price - $product->sale_price > 0)
@@ -1239,7 +1189,7 @@
 @endsection
 
 @section('js')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 
     <script>
         $('.product-ordering').on('change', 'select.orderby', function() {
@@ -1425,6 +1375,37 @@
                 });
                 return htmlArray.join('');
             }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('.product-rating').raty({
+                // score: function() {
+                //     return $(this).attr('data-score');
+                // },
+                // score: 3,
+                readOnly: true
+            });
+            $('.user-review-rating').raty({
+                // score: function() {
+                //     return $(this).attr('data-score');
+                // },
+                // score: 3,
+                readOnly: true
+            });
+
+
+            // $('#review-rating').raty({
+            //     half: true,
+            //     // readOnly: true
+            // });
+
+            $('#review-rating').raty({
+                click: function(score, evt) {
+                    // alert('ID: ' + this.id + "\nscore: " + score + "\nevent: " + evt);
+                }
+            });
         });
     </script>
 @endsection

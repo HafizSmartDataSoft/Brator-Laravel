@@ -167,10 +167,10 @@
                                                 <div class="dropdown-content w-40">
                                                     <ul class="dropdown-list">
                                                         <li class="dropdown-list-item">
-                                                            <a href="javascript:void(0)" class="dropdown-link">
+                                                            <a href="{{ route('product.reviews', ['sku' => $product->sku]) }}" class="dropdown-link">
                                                                 <i class="h-5 text-slate-400"
                                                                     data-feather="external-link"></i>
-                                                                <span>Details</span>
+                                                                <span>Reviews</span>
                                                             </a>
                                                         </li>
                                                         <li class="dropdown-list-item">

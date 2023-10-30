@@ -63,8 +63,8 @@
                   </p> --}}
                                 </div>
                             </div>
-                            <!-- Order Header Ends -->
 
+                            <!-- Order Header Ends -->
                             <!-- Order Info Starts -->
                             <div class="flex flex-col justify-between space-y-6 p-1 md:flex-row md:space-y-0">
                                 <div
@@ -200,8 +200,7 @@
                                                     </span>
                                                     <span
                                                         class="inline-block w-1/2 pr-6 text-right text-sm font-semibold text-slate-700 dark:text-slate-300">
-                                                        $0.00
-                                                    </span>
+                                                        -${{ ($product->sale_price * ($coupon->discount / 100) )* $order->quantity }}                                                    </span>
                                                 </li>
                                                 <li class="flex items-center gap-x-2">
                                                     <span

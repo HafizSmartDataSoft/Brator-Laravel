@@ -56,7 +56,7 @@ class Product extends Model
 
     public function userReviews()
     {
-        return $this->hasMany(UserReview::class);
+        return $this->hasMany(UserReview::class, 'product_id', 'id');
     }
 
     // public function subCategory()

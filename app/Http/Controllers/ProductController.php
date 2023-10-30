@@ -16,11 +16,10 @@ use App\Models\ProductSubCategory;
 use App\Models\ProductTag;
 use App\Models\TagModel;
 use App\Models\TypeWorkOn;
+use App\Models\UserReview;
 // use Intervention\Image\ImageManagerStatic as Image;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\JsonResponse;
-
-
 
 class ProductController extends Controller
 {
@@ -620,5 +619,16 @@ class ProductController extends Controller
         $products = Product::where('name', 'LIKE', '%' . $searchQuery . '%')->get();
 
         return response()->json($products);
+    }
+
+    public function productReviews($sku)
+    {
+        $product=Product::where('sku',$sku)->first();
+
+        // $productReviews=
+        // return $product->userReviews;
+        return view('admin.review.list', [
+            'reviews' => $product->userReviews,
+        ]);
     }
 }

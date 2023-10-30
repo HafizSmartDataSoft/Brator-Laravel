@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CustomerRequest;
+use App\Models\Category;
 use App\Models\Customer;
 use App\Models\Orderdetail;
 use App\Models\Product;
+use App\Models\ProductSubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -206,5 +208,19 @@ class CustomerController extends Controller
         $imageUrl = $directory . $imageName;
         $image->move($directory, $imageName);
         return $imageUrl;
+    }
+    public function customerProducts($id)
+    {
+        // return $id;
+
+        return view(
+            'admin.order.order-list',
+            [
+                'orders' => Orderdetail::where('customer_id',$id)->orderBy('created_at', 'desc')->get(),
+                'products' => Product::all(),
+                'categories' => Category::all(),
+                'sub_categories' => ProductSubCategory::all(),
+            ]
+        );
     }
 }

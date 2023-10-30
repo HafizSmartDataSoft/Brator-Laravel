@@ -289,11 +289,10 @@
                         sub_categoryDiv.style.display = 'none';
                         productDiv.style.display = 'inline';
                     }
-                }
-                else if (selectedMake == 'all_products') {
-                        categoryDiv.style.display = 'none';
-                        sub_categoryDiv.style.display = 'none';
-                        productDiv.style.display = 'none';
+                } else if (selectedMake == 'all_products') {
+                    categoryDiv.style.display = 'none';
+                    sub_categoryDiv.style.display = 'none';
+                    productDiv.style.display = 'none';
                 }
 
 
@@ -302,4 +301,17 @@
 
         });
     </script>
+    @if (session('success'))
+        <script>
+            setTimeout(function() {
+                alert("{{ session('success') }}");
+            }, 500);
+        </script>
+    @elseif(session('update_success'))
+        <script>
+            setTimeout(function() {
+                alert("{{ session('update_success') }}");
+            }, 500);
+        </script>
+    @endif
 @endsection

@@ -42,19 +42,20 @@ class CategoryProductController extends Controller
      */
     public function show(Request $request, Category $product_category)
     {
+        // return $product_category;
 
         // return $product_category->id;
         //taking last viwed category to use in discount.
         session()->put('product_category', $product_category->id);
         $orderby = null;
         $orderby = $request->orderby;
-        // return $request;
         // return $product_category;
         //for parent category
         // session()->put('data-sort', '0');
         // $dataSort = session()->get('data-sort');
         // $dataSort = $request->query('sort_by');
         // return $dataSort;
+
         $products = Product::where('parent_category', $product_category->id);
 
         if (!empty($orderby)) {
@@ -68,6 +69,9 @@ class CategoryProductController extends Controller
             }
         }
 
+        $products = $products->with(['userReviews' => function ($query) {
+            $query->where('status', 1);
+        }]);
         $products = $products->paginate(3);
 
         if (count($products) == 0) {
@@ -85,6 +89,9 @@ class CategoryProductController extends Controller
                 }
             }
 
+            $products = $products->with(['userReviews' => function ($query) {
+                $query->where('status', 1);
+            }]);
             $products = $products->paginate(3);
 
             // if (!empty($orderby)) {
@@ -101,6 +108,7 @@ class CategoryProductController extends Controller
         $categories = Category::with('children')->whereNull('parent_id')->get();
         $recentProducts = session()->get('products.recently_viewed');
         $products->appends(['orderby' => $orderby]);
+        // return $products;
 
         //find discount to show discount amount with every product
         // if ($product_category->parent_id) {
@@ -167,21 +175,22 @@ class CategoryProductController extends Controller
         //     }
         // } else {
         //     //category
-
         // }
         //find discount end
-
-
-
         // return $home_imeges;
+
         return view(
             'frontend.product-category.category-products',
             [
                 'category' => $product_category,
                 'products' => $products,
-                'recentlyViewed' => Product::find($recentProducts),
+                'recentlyViewed' => Product::with(['userReviews' => function ($query) {
+                    $query->where('status', 1);
+                }])->find($recentProducts),
                 'categories' => $categories,
-                'allProducts' => Product::all(),
+                'allProducts' =>  Product::with(['userReviews' => function ($query) {
+                    $query->where('status', 1);
+                }])->get(),
                 'orderby' => $orderby,
             ]
         );

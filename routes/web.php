@@ -49,6 +49,8 @@ Route::group(["prefix" => "customer",], function () {
     Route::get('registration', [CustomerController::class, 'registration'])->name('registration');
     Route::post('loginCheck', [CustomerController::class, 'loginCheck'])->name('loginCheck');
 });
+Route::get('customer/products/{id}', [CustomerController::class, 'customerProducts'])->name('customer.products');
+
 Route::get('customer/orders', [CustomerController::class, 'orders'])->name('customer/orders');
 Route::get('customer/login', [CustomerController::class, 'login'])->name('customer/login');
 Route::get('customer/logout', [CustomerController::class, 'logout'])->name('customer/logout');
@@ -58,8 +60,10 @@ Route::group(["prefix" => "categories",], function () {
 });
 
 Route::group(["prefix" => "product",], function () {
+    Route::resource('discount', DiscountController::class);
     Route::resource('product-details', ProductViewController::class);
 });
+
 Route::get('discount/validate', [DiscountController::class, 'discountValidate'])->name('discount.validate');
 Route::get('product/recentlyViewed', [ProductViewController::class, 'recentlyViewed'])->name('product.recentlyViewed');
 Route::get('product/store-compare', [ProductViewController::class, 'storeCompare'])->name('product.store-compare');
@@ -80,6 +84,7 @@ Route::get('/search', [ShopController::class, 'search'])->name('search.year');
 Route::get('/shop/make/{make}', [ShopController::class, 'showMakeProduct'])->name('shop.make');
 Route::get('/shop/model/{model}', [ShopController::class, 'showModelProduct'])->name('shop.model');
 Route::get('/product/search', [ProductController::class, 'search']);
+Route::get('/product/reviews/{sku}', [ProductController::class, 'productReviews'])->name('product.reviews');;
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -117,7 +122,6 @@ Route::middleware('auth')->group(function () {
         Route::resource('vehicle-make', VehicleMakeController::class);
         Route::resource('vehicle-year', VehicleYearController::class);
         Route::resource('product', ProductController::class);
-        Route::resource('discount', DiscountController::class);
         Route::resource('order', OrderController::class);
         Route::post('save-dropzone-image', [ProductController::class, 'dropzoneImage'])->name('save-dropzone-image');
         Route::resource('image-setting', ImageSettingController::class);

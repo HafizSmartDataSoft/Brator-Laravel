@@ -157,13 +157,13 @@
                                                 </div>
                                                 <div class="dropdown-content w-40">
                                                     <ul class="dropdown-list">
-                                                        <li class="dropdown-list-item">
+                                                        {{-- <li class="dropdown-list-item">
                                                             <a href="javascript:void(0)" class="dropdown-link">
                                                                 <i class="h-5 text-slate-400"
                                                                     data-feather="external-link"></i>
                                                                 <span>Details</span>
                                                             </a>
-                                                        </li>
+                                                        </li> --}}
                                                         <li class="dropdown-list-item">
                                                             <a href="{{ route('vehicle-make.edit', ['vehicle_make' => $vehicle_make->id]) }}"
                                                                 class="dropdown-link">

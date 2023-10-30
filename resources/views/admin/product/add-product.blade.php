@@ -521,7 +521,6 @@
 
                 submitButton.addEventListener("click", function(e) {
                     console.log(myDropzone);
-
                     e.preventDefault();
                     e.stopPropagation();
                     myDropzone.processQueue();
